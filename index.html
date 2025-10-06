@@ -52,6 +52,12 @@
             letter-spacing: 2px;
         }
 
+        /* Swipe Nav wrapper */
+        .nav-links-wrapper {
+            display: flex;
+            overflow-x: hidden;
+        }
+
         .nav-links {
             display: flex;
             gap: 3rem;
@@ -101,6 +107,14 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .logo-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
         .logo-box:hover {
@@ -166,7 +180,7 @@
 
         .favorites-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Always 3 columns */
+            grid-template-columns: repeat(3, 1fr);
             gap: 2.5rem;
             max-width: 1400px;
             margin: 0 auto 4rem;
@@ -193,6 +207,14 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .item-image.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
         .item-image img {
@@ -426,27 +448,38 @@
                 padding: 0.8rem 3%;
             }
             
+            .nav-links-wrapper {
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+            }
+            
             .nav-links {
-                flex-wrap: wrap;
-                gap: 0.8rem;
-                justify-content: center;
-                font-size: 0.7rem;
+                flex-wrap: nowrap;
+                gap: 1.5rem;
+                scroll-snap-align: start;
+            }
+
+            .nav-links a {
+                white-space: nowrap;
             }
             
             .logo-text {
                 font-size: 1.1rem;
             }
-
-            /* Favorites Grid Mobile Fix */
+            
+            /* Favorites 2+1 layout */
             .favorites-grid {
                 display: grid;
-                grid-template-columns: 1fr 1fr; /* 2 columns on mobile */
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: auto;
                 gap: 1rem;
+                max-width: 100%;
+                margin: 0 auto 4rem;
             }
 
-            /* Center the third item below */
             .favorites-grid .favorite-item:nth-child(3) {
-                grid-column: 1 / -1; /* span full width */
+                grid-column: 1 / span 2;
             }
             
             .item-image {
@@ -515,14 +548,16 @@
 <nav id="navbar">
     <div class="nav-container">
         <div class="logo-text">MGC</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="order.html">Order Now</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="who-we-serve.html">Who We Serve</a></li>
-            <li><a href="testimonials.html">Testimonials</a></li>
-        </ul>
+        <div class="nav-links-wrapper">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="order.html">Order Now</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="who-we-serve.html">Who We Serve</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+            </ul>
+        </div>
     </div>
 </nav>
 
@@ -654,5 +689,20 @@
     <p>© 2025 Metro Gourmet Catering & Events NYC. All rights reserved.</p>
 </footer>
 
+<script>
+    // Fade-in effect for logo and favorite items
+    function fadeInElements() {
+        const elements = document.querySelectorAll('.logo-box, .item-image');
+        elements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight) {
+                el.classList.add('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', fadeInElements);
+    window.addEventListener('load', fadeInElements);
+</script>
 </body>
 </html>
