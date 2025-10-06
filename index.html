@@ -76,8 +76,8 @@
             color: #D4AF37;
         }
 
-        /* Hero Section - Black Background with Logo */
-         .hero-section {
+        /* Hero Section */
+        .hero-section {
             background: #000000;
             min-height: 100vh;
             display: flex;
@@ -124,15 +124,6 @@
             object-fit: contain;
         }
 
-        .logo-text-large {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            color: #d4af37;
-            letter-spacing: 4px;
-            text-align: center;
-        }
-
         .hero-subtitle {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
@@ -175,7 +166,7 @@
 
         .favorites-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr); /* Always 3 columns */
             gap: 2.5rem;
             max-width: 1400px;
             margin: 0 auto 4rem;
@@ -403,11 +394,6 @@
                 font-size: 1.3rem;
             }
             
-            .favorites-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-            
             .item-image {
                 height: 200px;
             }
@@ -451,8 +437,9 @@
                 font-size: 1.1rem;
             }
             
+            /* Keep favorites grid always 3 columns on mobile */
             .favorites-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(3, 1fr);
                 gap: 1rem;
             }
             
@@ -477,8 +464,6 @@
                 padding: 0.9rem 2rem;
                 font-size: 0.9rem;
             }
-
-            /* ✅ FIXES ADDED BELOW */
 
             /* Testimonials Mobile Fix */
             .testimonials-grid {
@@ -520,147 +505,147 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo-text">MGC</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+<!-- Navigation -->
+<nav id="navbar">
+    <div class="nav-container">
+        <div class="logo-text">MGC</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="order.html">Order Now</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="who-we-serve.html">Who We Serve</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="logo-container">
+        <div class="logo-box">
+            <div class="logo-placeholder">
+                <img src="LOGO GOURMET.png" alt="Metro Gourmet Catering Logo">
+            </div>
+        </div>
+        <h1 class="hero-subtitle">METRO GOURMET CATERING & EVENTS NYC</h1>
+    </div>
+</section>
+
+<div class="cta-buttons">
+    <a href="order.html" class="cta-btn cta-btn-primary">Order Now</a>
+    <a href="menu.html" class="cta-btn cta-btn-secondary">View Full Menu</a>
+</div>
+
+<!-- Favorites Section -->
+<section class="favorites-section">
+    <div class="section-header">
+        <h2 class="section-title">Our Signature Favorites</h2>
+        <div class="gold-line"></div>
+        <p class="section-subtitle">Exquisite dishes that define luxury catering</p>
+    </div>
+
+    <div class="favorites-grid">
+        <div class="favorite-item">
+            <div class="item-image">
+                <img src="/placeholder.svg?height=280&width=400" alt="Beef Wellington">
+            </div>
+            <div class="item-content">
+                <h3 class="item-name">Beef Wellington</h3>
+                <p class="item-description">Tender beef wrapped in golden puff pastry with mushroom duxelles and rich red wine reduction</p>
+            </div>
+        </div>
+
+        <div class="favorite-item">
+            <div class="item-image">
+                <img src="/placeholder.svg?height=280&width=400" alt="Lobster Tail">
+            </div>
+            <div class="item-content">
+                <h3 class="item-name">Butter-Poached Lobster</h3>
+                <p class="item-description">Succulent lobster tail poached in herb butter, served with lemon and seasonal vegetables</p>
+            </div>
+        </div>
+
+        <div class="favorite-item">
+            <div class="item-image">
+                <img src="/placeholder.svg?height=280&width=400" alt="Truffle Risotto">
+            </div>
+            <div class="item-content">
+                <h3 class="item-name">Black Truffle Risotto</h3>
+                <p class="item-description">Creamy arborio rice infused with black truffle and aged parmesan, finished with truffle oil</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+    <div class="section-header">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="gold-line"></div>
+        <p class="section-subtitle">Trusted by New York's finest events</p>
+    </div>
+
+    <div class="testimonials-grid">
+        <div class="testimonial-card">
+            <div class="testimonial-rating">★★★★★</div>
+            <p class="testimonial-text">"Metro Gourmet made our wedding day absolutely perfect. The food was exceptional, the presentation stunning, and their staff incredibly professional. Our guests are still raving about the meal!"</p>
+            <div class="testimonial-author">Sarah & Michael Chen</div>
+            <div class="testimonial-role">Wedding Reception, Manhattan</div>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="testimonial-rating">★★★★★</div>
+            <p class="testimonial-text">"We've used Metro Gourmet for multiple corporate events. Their ability to accommodate dietary restrictions while maintaining exceptional quality is impressive. Highly recommended!"</p>
+            <div class="testimonial-author">David Rodriguez</div>
+            <div class="testimonial-role">Corporate Event, Midtown NYC</div>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="testimonial-rating">★★★★★</div>
+            <p class="testimonial-text">"From menu design to delivery, the Metro Gourmet team delivered a flawless experience. Their attention to detail and luxury touch is unmatched in New York catering."</p>
+            <div class="testimonial-author">Amanda Greene</div>
+            <div class="testimonial-role">Private Event, Brooklyn</div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Links Footer -->
+<section class="quick-links-section">
+    <div class="quick-links-container">
+        <div class="quick-links-column">
+            <h3>Quick Links</h3>
+            <ul>
                 <li><a href="menu.html">Menu</a></li>
                 <li><a href="order.html">Order Now</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="who-we-serve.html">Who We Serve</a></li>
                 <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="logo-container">
-            <div class="logo-box">
-                <div class="logo-placeholder">
-                    <img src="LOGO GOURMET.png" alt="Metro Gourmet Catering Logo">
-                </div>
+        <div class="quick-links-column">
+            <h3>Contact</h3>
+            <div class="contact-info">
+                <p>📍 New York City, NY</p>
+                <p>📞 (212) 555-0199</p>
+                <p>✉️ info@metrogourmetnyc.com</p>
             </div>
-            <h1 class="hero-subtitle">METRO GOURMET CATERING & EVENTS NYC</h1>
         </div>
-    </section>
-    
-    <div class="cta-buttons">
-        <a href="order.html" class="cta-btn cta-btn-primary">Order Now</a>
-        <a href="menu.html" class="cta-btn cta-btn-secondary">View Full Menu</a>
+
+        <div class="quick-links-column">
+            <h3>Follow Us</h3>
+            <ul>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+        </div>
     </div>
+</section>
 
-    <!-- Favorites Section -->
-    <section class="favorites-section">
-        <div class="section-header">
-            <h2 class="section-title">Our Signature Favorites</h2>
-            <div class="gold-line"></div>
-            <p class="section-subtitle">Exquisite dishes that define luxury catering</p>
-        </div>
-
-        <div class="favorites-grid">
-            <div class="favorite-item">
-                <div class="item-image">
-                    <img src="/placeholder.svg?height=280&width=400" alt="Beef Wellington">
-                </div>
-                <div class="item-content">
-                    <h3 class="item-name">Beef Wellington</h3>
-                    <p class="item-description">Tender beef wrapped in golden puff pastry with mushroom duxelles and rich red wine reduction</p>
-                </div>
-            </div>
-
-            <div class="favorite-item">
-                <div class="item-image">
-                    <img src="/placeholder.svg?height=280&width=400" alt="Lobster Tail">
-                </div>
-                <div class="item-content">
-                    <h3 class="item-name">Butter-Poached Lobster</h3>
-                    <p class="item-description">Succulent lobster tail poached in herb butter, served with lemon and seasonal vegetables</p>
-                </div>
-            </div>
-
-            <div class="favorite-item">
-                <div class="item-image">
-                    <img src="/placeholder.svg?height=280&width=400" alt="Truffle Risotto">
-                </div>
-                <div class="item-content">
-                    <h3 class="item-name">Black Truffle Risotto</h3>
-                    <p class="item-description">Creamy arborio rice infused with black truffle and aged parmesan, finished with truffle oil</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="section-header">
-            <h2 class="section-title">What Our Clients Say</h2>
-            <div class="gold-line"></div>
-            <p class="section-subtitle">Trusted by New York's finest events</p>
-        </div>
-
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-rating">★★★★★</div>
-                <p class="testimonial-text">"Metro Gourmet made our wedding day absolutely perfect. The food was exceptional, the presentation stunning, and their staff incredibly professional. Our guests are still raving about the meal!"</p>
-                <div class="testimonial-author">Sarah & Michael Chen</div>
-                <div class="testimonial-role">Wedding Reception, Manhattan</div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="testimonial-rating">★★★★★</div>
-                <p class="testimonial-text">"We've used Metro Gourmet for multiple corporate events. Their ability to accommodate dietary restrictions while maintaining exceptional quality is impressive. Highly recommended!"</p>
-                <div class="testimonial-author">David Rodriguez</div>
-                <div class="testimonial-role">Corporate Event, Midtown NYC</div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="testimonial-rating">★★★★★</div>
-                <p class="testimonial-text">"From menu design to delivery, the Metro Gourmet team delivered a flawless experience. Their attention to detail and luxury touch is unmatched in New York catering."</p>
-                <div class="testimonial-author">Amanda Greene</div>
-                <div class="testimonial-role">Private Event, Brooklyn</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quick Links Footer -->
-    <section class="quick-links-section">
-        <div class="quick-links-container">
-            <div class="quick-links-column">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="menu.html">Menu</a></li>
-                    <li><a href="order.html">Order Now</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="quick-links-column">
-                <h3>Contact</h3>
-                <div class="contact-info">
-                    <p>📍 New York City, NY</p>
-                    <p>📞 (212) 555-0199</p>
-                    <p>✉️ info@metrogourmetnyc.com</p>
-                </div>
-            </div>
-
-            <div class="quick-links-column">
-                <h3>Follow Us</h3>
-                <ul>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">LinkedIn</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2025 Metro Gourmet Catering & Events NYC. All rights reserved.</p>
-    </footer>
+<footer>
+    <p>© 2025 Metro Gourmet Catering & Events NYC. All rights reserved.</p>
+</footer>
 </body>
 </html>
