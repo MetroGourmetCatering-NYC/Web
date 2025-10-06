@@ -436,11 +436,17 @@
             .logo-text {
                 font-size: 1.1rem;
             }
-            
-            /* Keep favorites grid always 3 columns on mobile */
+
+            /* Favorites Grid Mobile Fix */
             .favorites-grid {
-                grid-template-columns: repeat(3, 1fr);
+                display: grid;
+                grid-template-columns: 1fr 1fr; /* 2 columns on mobile */
                 gap: 1rem;
+            }
+
+            /* Center the third item below */
+            .favorites-grid .favorite-item:nth-child(3) {
+                grid-column: 1 / -1; /* span full width */
             }
             
             .item-image {
@@ -647,5 +653,8 @@
 <footer>
     <p>© 2025 Metro Gourmet Catering & Events NYC. All rights reserved.</p>
 </footer>
+
 </body>
 </html>
+
+
