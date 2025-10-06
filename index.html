@@ -3,1342 +3,629 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metro Gourmet Catering</title>
+    <title>Metro Gourmet Catering & Events NYC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Base and Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            /* Using a high-end serif font for a gourmet feel */
-            font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #ffffff;
+            color: #1a1a1a;
         }
-        
-        /* Layout and Navigation */
-        .page {
-            display: none;
-        }
-        .page.active {
-            display: block;
-        }
-        header {
-            background: #000000;
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
+
+        /* Navigation */
         nav {
-            max-width: 1200px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.scrolled .nav-links a {
+            color: #1a1a1a;
+        }
+
+        nav.scrolled .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        .nav-container {
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
-        }
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            /* Gold gradient for elegance */
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            cursor: pointer;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .nav-links a:hover {
-            color: #FFD700;
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 20, 0.95));
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        /* Hero Section - Black Background */
+        .hero-section {
+            background: #000000;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .logo-container {
             text-align: center;
-            color: white;
-            margin-top: 60px;
+            max-width: 800px;
         }
-        .hero-content h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        .hero-content p {
-            font-size: 1.6rem;
+
+        .logo-box {
+            border: 3px solid #d4af37;
+            padding: 4rem;
+            background: rgba(212, 175, 55, 0.05);
             margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.2s backwards;
-            font-style: italic;
-            font-weight: 300;
-        }
-        .hero-buttons {
+            min-height: 400px;
             display: flex;
-            gap: 1rem;
+            align-items: center;
             justify-content: center;
-            animation: fadeInUp 1s ease 0.4s backwards;
+            transition: all 0.3s ease;
         }
 
-        /* Call-to-Action Buttons (Primary Color: Burnt Orange/Gold) */
-        .cta-button {
-            background: #e67e22; /* Burnt Orange */
-            color: white;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 500;
-            letter-spacing: 1px;
-            font-family: inherit;
+        .logo-box:hover {
+            border-color: #f4d03f;
+            background: rgba(212, 175, 55, 0.1);
         }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(230, 126, 34, 0.4);
-            background: #d35400;
+
+        .logo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
         }
-        .cta-button-secondary {
-            background: transparent;
-            border: 2px solid white;
+
+        .logo-placeholder img {
+            max-width: 100%;
+            max-height: 350px;
+            object-fit: contain;
         }
-        .cta-button-secondary:hover {
-            background: white;
-            color: #000000;
-            border-color: white;
-        }
-        .cta-button-gold {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            color: #000000;
+
+        .logo-text-large {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
             font-weight: 700;
-        }
-        .cta-button-gold:hover {
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.5);
-            background: #FFA500;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            color: #d4af37;
+            letter-spacing: 4px;
+            text-align: center;
         }
 
-        /* Sections */
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #ffffff;
+            letter-spacing: 3px;
+            margin-top: 1rem;
+        }
+
+        /* White Background Sections */
+        .white-section {
+            background: #ffffff;
+            padding: 6rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1400px;
             margin: 0 auto;
         }
+
         .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
             text-align: center;
-            font-size: 2.8rem;
             margin-bottom: 1rem;
             color: #1a1a1a;
-            font-weight: 600;
-            letter-spacing: 1px;
         }
+
         .section-subtitle {
             text-align: center;
             color: #666;
-            margin-bottom: 3rem;
-            font-size: 1.2rem;
-            font-style: italic;
-            font-weight: 300;
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            letter-spacing: 1px;
         }
 
-        /* Services Section */
-        .services {
+        .gold-line {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 1rem auto 3rem;
+        }
+
+        /* Favorites Grid */
+        .favorites-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            text-align: center;
-        }
-        .service-card {
-            background: #f4f4f4;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            background: #fff;
-        }
-        .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            color: #e67e22;
+            margin-bottom: 4rem;
         }
 
-        /* About Section */
-        .about {
-            background: #f8f9fa;
-        }
-        .about-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        .about-image {
-            font-size: 8rem;
-            text-align: center;
-            color: #e67e22;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: #000000;
-        }
-        .contact .section-title {
-            color: white !important;
-        }
-
-        /* Form Controls */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #e67e22;
-        }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        .form-group textarea {
-            height: 100px;
-            resize: vertical;
-        }
-
-        /* Menu Display */
-        .menu-hero {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 20, 0.95));
-            color: white;
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            margin-top: 60px;
-        }
-        .menu-hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        .menu-hero p {
-            color: #bdc3c7; 
-            font-style: italic;
-        }
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr); /* Default 5 columns for large screens */
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .menu-item {
-            background: white;
-            border-radius: 15px;
+        .food-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.2s, opacity 0.3s;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        .menu-item:hover {
-             transform: translateY(-5px);
+
+        .food-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            border-color: #d4af37;
         }
-        .menu-item-image {
+
+        .food-image {
             width: 100%;
-            height: 180px; 
-            background: #fdfae5; 
+            height: 250px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem; 
-            border-bottom: 2px solid #ddd;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
         }
-        .menu-item-content {
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .food-info {
             padding: 1.5rem;
         }
-        .menu-item-title {
-            font-size: 1.4rem;
-            color: #1a1a1a;
-            margin-bottom: 0.5rem;
+
+        .food-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
             font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
         }
-        .menu-item-description {
+
+        .food-description {
             color: #666;
             font-size: 0.95rem;
             margin-bottom: 1rem;
-            line-height: 1.7;
+            line-height: 1.6;
         }
-        .menu-item-price {
+
+        .food-price {
             font-size: 1.3rem;
-            font-weight: bold;
-            color: #e67e22;
-        }
-        .add-to-order-btn {
-            background: #e67e22;
-            color: white;
-            padding: 0.6rem 1rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 1rem;
-            transition: background 0.3s;
-            font-family: inherit;
-            font-weight: 500;
-        }
-        .add-to-order-btn:hover {
-            background: #d35400;
-        }
-        
-        /* Filter Controls Styling */
-        .filter-controls {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 2rem;
-        }
-        .filter-controls h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            color: #555;
             font-weight: 600;
-            margin-top: 1rem;
-        }
-        .filter-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .filter-button, .search-input {
-            padding: 0.6rem 1rem;
-            border-radius: 20px;
-            border: 1px solid #ddd;
-            background: #f9f9f9;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.9rem;
-            font-family: inherit;
-        }
-        .filter-button:hover:not(.active) {
-            background: #eee;
-            border-color: #ccc;
-        }
-        .filter-button.active {
-            background: #e67e22;
-            color: white;
-            border-color: #e67e22;
-            font-weight: 600;
-        }
-        .search-input {
-            width: 100%;
-            max-width: 400px;
-            padding: 0.8rem 1rem;
-            border-radius: 10px;
-            font-size: 1rem;
-        }
-        /* Order Builder Item Selector Customization for Filtering */
-        .item-selector.hidden {
-            display: none !important;
+            color: #d4af37;
         }
 
-        /* Order Builder Page */
-        .order-builder {
-            background: #f8f9fa;
-            min-height: 100vh;
-            padding-top: 100px;
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
         }
-        .order-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+
+        .btn {
+            padding: 1.2rem 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border: 2px solid;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
         }
-        .order-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+        .btn-primary {
+            background: #d4af37;
+            color: #000000;
+            border-color: #d4af37;
         }
-        
-        /* Package Selection */
-        .package-grid {
+
+        .btn-primary:hover {
+            background: #f4d03f;
+            border-color: #f4d03f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1a1a1a;
+            border-color: #1a1a1a;
+        }
+
+        .btn-secondary:hover {
+            background: #1a1a1a;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: #f9f9f9;
+            padding: 6rem 2rem;
+        }
+
+        .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .package-card {
-            border: 2px solid #eee;
-            padding: 1.5rem;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            min-height: 250px;
-        }
-        .package-card:hover {
-            border-color: #e67e22;
-        }
-        .package-card.selected {
-            border-color: #e67e22;
-            background: #fffbf5;
-            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.2);
-        }
-        .package-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #000;
-        }
-        .package-price {
-            font-size: 1.8rem;
-            color: #e67e22;
-            font-weight: 700;
-            margin-top: 0.5rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        /* Individual Item Selector (within Order) */
-        .item-selector {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px dashed #eee;
+        .testimonial-card {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-left: 4px solid #d4af37;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         }
-        .qty-controls {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
+
+        .testimonial-text {
+            font-style: italic;
+            color: #333;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
         }
-        .qty-btn {
-            background: #e67e22;
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 5px;
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-role {
+            color: #d4af37;
+            font-size: 0.9rem;
+        }
+
+        .stars {
+            color: #d4af37;
+            margin-bottom: 1rem;
             font-size: 1.2rem;
-            cursor: pointer;
-            transition: background 0.2s;
-            font-family: inherit;
-        }
-        .qty-btn:hover {
-            background: #d35400;
-        }
-        .qty-display {
-            font-size: 1.1rem;
-            font-weight: bold;
-            width: 25px;
-            text-align: center;
-        }
-
-        /* Order Summary Box */
-        .order-summary-box {
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: #f9f9f9;
-        }
-        .summary-line {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.3rem 0;
-            font-size: 1rem;
-            color: #444;
-        }
-        .summary-total .summary-line {
-            font-size: 1.4rem;
-            font-weight: bold;
-            border-top: 2px solid #e67e22;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            color: #000;
         }
 
         /* Footer */
         footer {
+            background: #000000;
+            color: #ffffff;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #d4af37;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        .footer-bottom {
             text-align: center;
-            padding: 2rem;
-            background: #1a1a1a;
-            color: #ddd;
-            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
         }
-        
-        /* Media Queries - Responsive Grid Updates */
-        @media (max-width: 1200px) {
-            .menu-grid {
-                grid-template-columns: repeat(4, 1fr); 
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .favorites-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-        }
-        @media (max-width: 900px) {
-            .menu-grid {
-                grid-template-columns: repeat(3, 1fr); 
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .filter-group {
-                gap: 0.4rem;
-            }
-            .filter-button {
-                padding: 0.5rem 0.8rem;
-            }
-            .about-content {
-                grid-template-columns: 1fr; /* Stack about content */
-            }
-            .about-image {
-                display: none; /* Hide large icon on smaller screens */
+
+            .nav-links {
+                gap: 1.5rem;
             }
         }
-        @media (max-width: 768px) {
-            .menu-grid {
-                grid-template-columns: repeat(2, 1fr); 
+
+        @media (max-width: 640px) {
+            .favorites-grid,
+            .testimonials-grid,
+            .footer-container {
+                grid-template-columns: 1fr;
             }
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-            .hero-content p {
-                font-size: 1.3rem;
-            }
-        }
-        @media (max-width: 480px) {
-             .menu-grid {
-                grid-template-columns: 1fr; 
-            }
-            .filter-group {
+
+            .cta-buttons {
                 flex-direction: column;
-                align-items: stretch;
+                gap: 1rem;
             }
-            .filter-button {
-                width: 100%;
-                text-align: center;
+
+            .logo-text-large {
+                font-size: 2.5rem;
             }
-            .hero-buttons {
-                flex-direction: column;
+
+            .section-title {
+                font-size: 2.5rem;
             }
-            .cta-button {
-                width: 100%;
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+                font-size: 0.85rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo" onclick="showPage('home')">Metro Gourmet</div>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo-text">MGC</div>
             <ul class="nav-links">
-                <li><a onclick="showPage('home')">Home</a></li>
-                <li><a onclick="showPage('menu')">View Menu</a></li>
-                <li><a onclick="showPage('order')">Create Order</a></li>
-                <li><a onclick="scrollToSection('about')">About</a></li>
-                <li><a onclick="scrollToSection('contact')">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="order.html">Order Now</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="who-we-serve.html">Who We Serve</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
             </ul>
-        </nav>
-    </header>
-
-    <!-- HOME PAGE -->
-    <div id="home" class="page active">
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Metro Gourmet Catering</h1>
-                <p>Exceptional Events, Unforgettable Flavors</p>
-                <div class="hero-buttons">
-                    <a onclick="showPage('order')" class="cta-button cta-button-gold">Create Your Order</a>
-                    <a onclick="showPage('menu')" class="cta-button cta-button-secondary">View Menu</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="services" class="section">
-            <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">Excellence in every event</p>
-            <div class="services">
-                <div class="service-card">
-                    <h3>Corporate Events</h3>
-                    <p>Elevate your business gatherings with our professional catering services.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Weddings</h3>
-                    <p>Make your special day truly memorable with our exquisite wedding catering.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Private Parties</h3>
-                    <p>Celebrate life's moments with style and exceptional culinary experiences.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Gala Dinners</h3>
-                    <p>Impress your guests with sophisticated multi-course dining experiences.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Holiday Catering</h3>
-                    <p>Enjoy the season without stress with our festive menus.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Custom Menus</h3>
-                    <p>Work with our chefs to create personalized menus for your occasion.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="section about">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">About Metro Gourmet</h2>
-                    <p>For over a decade, Metro Gourmet Catering has been the premier choice for discerning clients who demand nothing but the best. Our award-winning chefs combine culinary artistry with fresh, locally-sourced ingredients.</p>
-                    <p style="margin-top: 1rem;">We believe that exceptional food is just the beginning. Our dedicated team provides seamless service, elegant presentation, and meticulous attention to detail.</p>
-                </div>
-                <div class="about-image">🍽️</div>
-            </div>
-        </section>
-
-        <section id="contact" class="section contact">
-            <h2 class="section-title" style="color: white;">Get In Touch</h2>
-            <form class="contact-form" style="max-width: 600px; margin: 0 auto;" onsubmit="handleContactSubmit(event)">
-                <div class="form-group">
-                    <label style="color: white;">Name</label>
-                    <input type="text" required>
-                </div>
-                <div class="form-group">
-                    <label style="color: white;">Email</label>
-                    <input type="email" required>
-                </div>
-                <div class="form-group">
-                    <label style="color: white;">Message</label>
-                    <textarea required></textarea>
-                </div>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
-        </section>
-
-        <footer>
-            <p>&copy; 2025 Metro Gourmet Catering. All rights reserved.</p>
-        </footer>
-    </div>
-
-    <!-- MENU PAGE (View Only) -->
-    <div id="menu" class="page">
-        <div class="menu-hero">
-            <h1>Our Menu</h1>
-            <p style="color: #bdc3c7; font-style: italic;">Browse and filter our exquisite selections</p>
-            <button onclick="showPage('order')" class="cta-button cta-button-gold" style="margin-top: 2rem;">Create Your Order</button>
         </div>
-        <section class="section">
-            <div id="menuFilterControls" class="filter-controls"></div>
-            <div class="menu-grid" id="menuDisplay"></div>
-        </section>
-        <footer>
-            <p>&copy; 2025 Metro Gourmet Catering. All rights reserved.</p>
-        </footer>
-    </div>
+    </nav>
 
-    <!-- ORDER PAGE (Interactive) -->
-    <div id="order" class="page">
-        <div class="order-builder">
-            <div class="order-container">
-                <h1 class="section-title">Create Your Order</h1>
-                <p class="section-subtitle">Build your perfect catering package</p>
+    <!-- Hero Section - Black Background with Logo -->
+    <section class="hero-section">
+        <div class="logo-container">
+            <div class="logo-box">
+                <div class="logo-placeholder">
+                    <!-- Replace the src below with your actual logo image -->
+                    <!-- <img src="your-logo.png" alt="Metro Gourmet Catering Logo"> -->
+                    <div class="logo-text-large">MGC</div>
+                </div>
+            </div>
+            <h1 class="hero-subtitle">METRO GOURMET CATERING & EVENTS NYC</h1>
+        </div>
+    </section>
 
-                <!-- Event Type Selection -->
-                <div class="order-section">
-                    <h2>1. Select Event Details</h2>
-                    <div class="form-group">
-                        <label>Event Type *</label>
-                        <select id="eventType" required>
-                            <option value="">Choose your event type...</option>
-                            <option value="wedding">Wedding</option>
-                            <option value="corporate">Corporate Event</option>
-                            <option value="birthday">Birthday Party</option>
-                            <option value="anniversary">Anniversary</option>
-                            <option value="holiday">Holiday Party</option>
-                            <option value="gala">Gala Dinner</option>
-                            <option value="other">Other</option>
-                        </select>
+    <!-- Favorites Section - White Background -->
+    <section class="white-section">
+        <div class="section-container">
+            <h2 class="section-title">Our Signature Favorites</h2>
+            <div class="gold-line"></div>
+            <p class="section-subtitle">Handpicked selections that define luxury catering</p>
+            
+            <div class="favorites-grid">
+                <div class="food-card">
+                    <div class="food-image">
+                        <img src="/placeholder.svg?height=250&width=400" alt="Chicken Shawarma Pita">
                     </div>
-                    <div class="form-group">
-                        <label>Expected Guest Count (Min 10) *</label>
-                        <input type="number" id="guestCount" min="10" placeholder="Number of guests" required>
+                    <div class="food-info">
+                        <h3 class="food-title">Chicken Shawarma Pita</h3>
+                        <p class="food-description">Marinated shawarma in pita bread with tahini sauce</p>
+                        <div class="food-price">$42</div>
                     </div>
                 </div>
 
-                <!-- Package Selection -->
-                <div class="order-section">
-                    <h2>2. Choose a Package (Optional)</h2>
-                    <p style="color: #666; margin-bottom: 1.5rem;">Select a pre-designed package or build your own custom order below</p>
-                    <div class="package-grid">
-                        <div class="package-card" data-package="bronze" onclick="selectPackage('bronze', 25)">
-                            <div class="package-title">Bronze Package</div>
-                            <div class="package-price">$25 per person</div>
-                            <p style="color: #e74c3c; font-weight: 600; margin-top: 0.5rem;">Minimum 25 guests</p>
-                            <p style="color: #666; margin-top: 0.5rem;">Perfect for casual gatherings</p>
-                            <ul style="margin-top: 1rem; color: #666;">
-                                <li>3 Appetizer Selections</li>
-                                <li>2 Main Course Options</li>
-                                <li>1 Side Dish</li>
-                                <li>Beverages</li>
-                            </ul>
-                        </div>
-                        <div class="package-card" data-package="silver" onclick="selectPackage('silver', 40)">
-                            <div class="package-title">Silver Package</div>
-                            <div class="package-price">$45 per person</div>
-                            <p style="color: #e74c3c; font-weight: 600; margin-top: 0.5rem;">Minimum 40 guests</p>
-                            <p style="color: #666; margin-top: 0.5rem;">Ideal for most events</p>
-                            <ul style="margin-top: 1rem; color: #666;">
-                                <li>5 Appetizer Selections</li>
-                                <li>3 Main Course Options</li>
-                                <li>2 Side Dishes</li>
-                                <li>Salad</li>
-                                <li>Beverages</li>
-                            </ul>
-                        </div>
-                        <div class="package-card" data-package="gold" onclick="selectPackage('gold', 60)">
-                            <div class="package-title">Gold Package</div>
-                            <div class="package-price">$75 per person</div>
-                            <p style="color: #e74c3c; font-weight: 600; margin-top: 0.5rem;">Minimum 60 guests</p>
-                            <p style="color: #666; margin-top: 0.5rem;">Premium experience</p>
-                            <ul style="margin-top: 1rem; color: #666;">
-                                <li>8 Appetizer Selections</li>
-                                <li>4 Main Course Options</li>
-                                <li>3 Side Dishes</li>
-                                <li>2 Salads</li>
-                                <li>Dessert Station</li>
-                                <li>Premium Beverages</li>
-                            </ul>
-                        </div>
+                <div class="food-card">
+                    <div class="food-image">
+                        <img src="/placeholder.svg?height=250&width=400" alt="Beef Wellington">
                     </div>
-                    <p id="packageWarning" style="color: #e74c3c; margin-top: 1rem; font-weight: 600; display: none;"></p>
-                </div>
-
-                <!-- Custom Item Selection -->
-                <div class="order-section">
-                    <h2>3. Add Individual Items (Per Serving)</h2>
-                    <p style="color: #666; margin-bottom: 1.5rem;">Select specific items and quantities for your event</p>
-                    <div id="orderFilterControls" class="filter-controls"></div>
-                    <div id="itemSelectors"></div>
-                </div>
-
-                <!-- Order Summary -->
-                <div class="order-section">
-                    <h2>Order Summary</h2>
-                    <div class="order-summary-box" id="orderSummaryDisplay">
-                        <p style="color: #666;">Select items or a package to see your order summary</p>
+                    <div class="food-info">
+                        <h3 class="food-title">Beef Wellington</h3>
+                        <p class="food-description">Tender beef wrapped in puff pastry with mushroom duxelles</p>
+                        <div class="food-price">$85</div>
                     </div>
                 </div>
 
-                <!-- Inquiry Form -->
-                <div class="order-section">
-                    <h2>4. Contact Information</h2>
-                    <p id="inquiryErrorMessage" style="color: #e74c3c; font-weight: 600; margin-bottom: 1rem; display: none;"></p>
-                    <form id="orderForm" onsubmit="submitOrderInquiry(event)">
-                        <div class="form-group">
-                            <label>Full Name *</label>
-                            <input type="text" id="inquiryName" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email *</label>
-                            <input type="email" id="inquiryEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number *</label>
-                            <input type="tel" id="inquiryPhone" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Event Date</label>
-                            <input type="date" id="eventDate">
-                        </div>
-                        <div class="form-group">
-                            <label>Event Location/Venue</label>
-                            <input type="text" id="eventLocation">
-                        </div>
-                        <div class="form-group">
-                            <label>Additional Notes or Special Requests</label>
-                            <textarea id="inquiryNotes"></textarea>
-                        </div>
-                        <button type="submit" class="cta-button cta-button-gold" style="width: 100%; padding: 1.2rem;">Submit Inquiry</button>
-                        <p style="text-align: center; margin-top: 1rem; color: #666; font-size: 0.9rem;">
-                            We'll review your order and contact you within 24 hours to discuss details, pricing, and schedule a consultation.
-                        </p>
-                    </form>
+                <div class="food-card">
+                    <div class="food-image">
+                        <img src="/placeholder.svg?height=250&width=400" alt="Lobster Tail">
+                    </div>
+                    <div class="food-info">
+                        <h3 class="food-title">Lobster Tail</h3>
+                        <p class="food-description">Butter-poached lobster tail with lemon herb butter</p>
+                        <div class="food-price">$95</div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-image">
+                        <img src="/placeholder.svg?height=250&width=400" alt="Truffle Risotto">
+                    </div>
+                    <div class="food-info">
+                        <h3 class="food-title">Truffle Risotto</h3>
+                        <p class="food-description">Creamy arborio rice with black truffle and parmesan</p>
+                        <div class="food-price">$58</div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-image">
+                        <img src="/placeholder.svg?height=250&width=400" alt="Grilled Salmon">
+                    </div>
+                    <div class="food-info">
+                        <h3 class="food-title">Grilled Salmon</h3>
+                        <p class="food-description">Atlantic salmon with dill cream sauce and asparagus</p>
+                        <div class="food-price">$68</div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-image">
+                        <img src="/placeholder.svg?height=250&width=400" alt="Chocolate Lava Cake">
+                    </div>
+                    <div class="food-info">
+                        <h3 class="food-title">Chocolate Lava Cake</h3>
+                        <p class="food-description">Warm chocolate cake with molten center and vanilla ice cream</p>
+                        <div class="food-price">$32</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="order.html" class="btn btn-primary">Order Now</a>
+                <a href="menu.html" class="btn btn-secondary">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Preview -->
+    <section class="testimonials-section">
+        <div class="section-container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="gold-line"></div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Metro Gourmet made our corporate event absolutely unforgettable. The food was exquisite and the service impeccable."</p>
+                    <div class="testimonial-author">Sarah Johnson</div>
+                    <div class="testimonial-role">CEO, Tech Innovations Inc.</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Our wedding was perfect thanks to Metro Gourmet. Every dish was a masterpiece and our guests are still raving about it!"</p>
+                    <div class="testimonial-author">Michael & Emily Chen</div>
+                    <div class="testimonial-role">Wedding Clients</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Professional, elegant, and delicious. Metro Gourmet has been our go-to caterer for all major events for the past 3 years."</p>
+                    <div class="testimonial-author">David Martinez</div>
+                    <div class="testimonial-role">Event Coordinator, Plaza Hotel</div>
                 </div>
             </div>
         </div>
-        <footer>
-            <p>&copy; 2025 Metro Gourmet Catering. All rights reserved.</p>
-        </footer>
-    </div>
+    </section>
+
+    <!-- Footer with Quick Links -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Metro Gourmet</h3>
+                <p style="color: #cccccc; line-height: 1.8;">Elevating events with exceptional cuisine and impeccable service throughout New York City.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="order.html">Order Now</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="who-we-serve.html">Who We Serve</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="#">Corporate Events</a></li>
+                    <li><a href="#">Private Parties</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li>New York City, NY</li>
+                    <li>Phone: (212) 555-0123</li>
+                    <li>Email: info@metrogourmet.com</li>
+                    <li>Hours: Mon-Sun 8AM-10PM</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Metro Gourmet Catering & Events NYC. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
-        // --- DATA ---
-        const menuItems = [
-            {title: "Coconut Shrimp", description: "Crispy coconut-crusted shrimp with sweet chili sauce.", price: 85, icon: "🍤", cuisine: "Asian", course: "Appetizer"},
-            {title: "Assorted Sliders", description: "Mini burgers, pulled pork, and chicken sliders.", price: 65, icon: "🍔", cuisine: "American", course: "Main Course"},
-            {title: "Gochujang Fried Chicken", description: "Crispy chicken in Korean gochujang glaze.", price: 60, icon: "🍗", cuisine: "Asian", course: "Main Course"},
-            {title: "Chicken Garlic Parmesan", description: "Grilled chicken in garlic parmesan sauce.", price: 99, icon: "🐔", cuisine: "Italian", course: "Main Course"},
-            {title: "Spicy Shrimp Fajita", description: "Sizzling shrimp with peppers and onions.", price: 80, icon: "🌶️", cuisine: "Mexican", course: "Main Course"},
-            {title: "Chicken Broccoli Alfredo", description: "Creamy Alfredo pasta with chicken.", price: 50, icon: "🍝", cuisine: "Italian", course: "Main Course"},
-            {title: "Chicken Shawarma Pita", description: "Marinated shawarma in pita bread.", price: 42, icon: "🥙", cuisine: "Mediterranean", course: "Appetizer"},
-            {title: "BBQ Beef Meatballs", description: "Meatballs in tangy BBQ sauce.", price: 50, icon: "🍖", cuisine: "American", course: "Appetizer"},
-            {title: "Grilled Hanger Steak", description: "Perfectly seasoned and sliced.", price: 60, icon: "🥩", cuisine: "American", course: "Main Course"},
-            {title: "Cajun Shrimp", description: "Spicy pan-seared shrimp.", price: 55, icon: "🦐", cuisine: "American", course: "Appetizer"},
-            {title: "Mini Quiches Assortment", description: "Bite-sized quiches, various fillings.", price: 30, icon: "🥚", cuisine: "French", course: "Appetizer"},
-            {title: "Caprese Skewers", description: "Mozzarella, tomatoes, basil with balsamic.", price: 30, icon: "🍅", cuisine: "Italian", course: "Appetizer"},
-            {title: "Vegetable Spring Rolls", description: "Crispy spring rolls with sweet chili sauce.", price: 30, icon: "🥕", cuisine: "Asian", course: "Appetizer"},
-            {title: "Garden Salad", description: "Fresh mixed greens and vegetables.", price: 30, icon: "🥗", cuisine: "American", course: "Side Dish"},
-            {title: "Mac and Cheese", description: "Creamy cheese blend baked to perfection.", price: 50, icon: "🧀", cuisine: "American", course: "Side Dish"},
-            {title: "Tiramisu Cups", description: "Espresso-soaked ladyfingers with mascarpone.", price: 40, icon: "🍰", cuisine: "Italian", course: "Dessert"},
-            {title: "Churros & Chocolate Sauce", description: "Crispy cinnamon sugar churros with dark chocolate dip.", price: 35, icon: "🍩", cuisine: "Mexican", course: "Dessert"},
-            // Beverages
-            {title: "Hot Belgian Chocolate", description: "Served with steamed milk and sweeteners. Serves 1.", price: 4.50, icon: "☕", cuisine: "Beverages", course: "Beverage"},
-            {title: "Hot Apple Cider", description: "Warm, spiced apple cider. Serves 1.", price: 2.95, icon: "🍎", cuisine: "Beverages", course: "Beverage"},
-            {title: "Assorted Canned Beverages", description: "A selection of sodas and soft drinks. Serves 1.", price: 2.50, icon: "🥤", cuisine: "Beverages", course: "Beverage"},
-            {title: "Spring Water", description: "Bottled natural spring water. Serves 1.", price: 2.00, icon: "💧", cuisine: "Beverages", course: "Beverage"},
-            {title: "Snapple", description: "Premium fruit-flavored drink. Serves 1.", price: 3.99, icon: "🍹", cuisine: "Beverages", course: "Beverage"},
-            {title: "San Pellegrino", description: "Sparkling Italian mineral water. Serves 1.", price: 3.95, icon: "🍾", cuisine: "Beverages", course: "Beverage"},
-            {title: "Perrier", description: "Carbonated natural spring water. Serves 1.", price: 3.95, icon: "🍾", cuisine: "Beverages", course: "Beverage"},
-            {title: "Individual Juice", description: "Assorted single-serving fruit juices. Serves 1.", price: 2.95, icon: "🍊", cuisine: "Beverages", course: "Beverage"},
-            {title: "Custom Beverage", description: "Specialty drink order or custom requirement. Serves 1.", price: 1.00, icon: "✨", cuisine: "Beverages", course: "Beverage"},
-            // --- CATERING TRAY (PASTA) ---
-            {title: "Tortellini Tray", description: "Served with sauteed shallots, sun-dried tomatoes, peppers and cremini mushrooms. Served with bread basket. Minimum 6 servings.", price: 9.95, icon: "🍝", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Tortellini with Caesar Salad Tray", description: "Served with sauteed shallots, sun-dried tomatoes, peppers and cremini mushrooms. Served with bread basket and Caesar salad. Minimum 6 servings.", price: 12.95, icon: "🥗", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Baked Lasagna Primavera Tray", description: "Roasted vegetables, ricotta and mozzarella cheeses, layered in pasta with basil marinara sauce. Served with bread basket. Minimum 6 servings.", price: 10.95, icon: "🥬", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Baked Lasagna Primavera with Caesar Salad Tray", description: "Roasted vegetables, ricotta and mozzarella cheeses, layered in pasta with basil marinara sauce. Served with bread basket and Caesar salad. Minimum 6 servings.", price: 13.95, icon: "🥗", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Baked Orecchiette Tray", description: "Served with spinach and mushrooms in 4 cheese sauce. Served with bread basket. Minimum 6 servings.", price: 10.95, icon: "🍝", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Baked Orecchiette with Caesar Salad Tray", description: "Served with spinach and mushrooms in 4 cheese sauce. Served with bread basket and Caesar salad. Minimum 6 servings.", price: 13.95, icon: "🥗", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Baked Shells Tray", description: "Served with steamed garlic broccoli and roasted peppers in a cheddar cream sauce. Served with bread basket. Minimum 6 servings.", price: 10.95, icon: "🥦", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Baked Shells with Caesar Salad Tray", description: "Served with steamed garlic broccoli and roasted peppers in a cheddar cream sauce. Served with bread basket and Caesar salad. Minimum 6 servings.", price: 13.95, icon: "🥗", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Baked Classic Mac and Cheese Tray", description: "Creamy baked classic mac and cheese. Served with bread basket. Minimum 6 servings.", price: 10.95, icon: "🧀", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Baked Classic Mac and Cheese and Caesar Salad Tray", description: "Creamy baked classic mac and cheese. Served with bread basket and Caesar salad. Minimum 6 servings.", price: 13.95, icon: "🥗", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Baked Ziti Tray", description: "Roasted eggplant, zucchini and herb roasted mushrooms in light cream sauce and Parmesan. Served with bread basket. Minimum 6 servings.", price: 10.95, icon: "🍆", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Baked Ziti with Caesar Salad Tray", description: "Roasted eggplant, zucchini and herb roasted mushrooms in light cream sauce and Parmesan. Served with bread basket and Caesar salad. Minimum 6 servings.", price: 13.95, icon: "🥗", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Baked Manicotti Tray", description: "Served with basil marinara sauce and fresh mozzarella. Served with bread basket. Minimum 6 servings.", price: 10.95, icon: "🍅", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Baked Manicotti with Caesar Salad Tray", description: "Served with basil marinara sauce and fresh mozzarella. Served with bread basket and Caesar salad. Minimum 6 servings.", price: 13.95, icon: "🥗", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Classic Baked Ziti Tray", description: "Served with ricotta and mozzarella topped with fresh grated Reggiano Parmesan cheese. Served with bread basket. Minimum 6 servings.", price: 10.95, icon: "🧀", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Classic Baked Ziti with Caesar Salad Tray", description: "Served with ricotta and mozzarella topped with fresh grated Reggiano Parmesan cheese. Served with bread basket and Caesar salad. Minimum 6 servings.", price: 13.95, icon: "🥗", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Lasagna Alforno Tray", description: "Layered pasta with fresh spinach, ricotta and Romano cheese. Served with bread basket. Minimum 6 servings.", price: 10.95, icon: "🥬", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Lasagna Alforno with Caesar Salad Tray", description: "Layered pasta with fresh spinach, ricotta and Romano cheese. Served with bread basket and Caesar salad. Minimum 6 servings.", price: 13.95, icon: "🥗", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Lasagna Rolls Tray", description: "Fresh spinach, fresh ricotta, mozzarella and Parmesan Reggiano in a tomato basil sauce. Served with bread basket. Minimum 6 servings.", price: 10.95, icon: "🍅", cuisine: "Italian", course: "Catering Tray"},
-            {title: "Lasagna Rolls with Caesar Salad Tray", description: "Fresh spinach, fresh ricotta, mozzarella and Parmesan Reggiano in a tomato basil sauce. Served with bread basket and Caesar salad. Minimum 6 servings.", price: 13.95, icon: "🥗", cuisine: "Italian", course: "Catering Tray"},
-            // --- NEW BREAKFAST ITEMS ---
-            {title: "Assorted Bagels Breakfast Platter", description: "Full size bagels and bialys served with butter, fruit jam and assorted cream cheeses. Minimum 6. Serves 1 per person.", price: 5.95, icon: "🥯", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Mini-Size Breakfast Platter", description: "Assortment of mini bagels, muffins, danishes, croissants, scones, and breakfast bread with spreads. Minimum 6. Serves 1 per person.", price: 8.95, icon: "🥐", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Smoked Salmon Breakfast Platter", description: "Smoked salmon, hard boiled eggs, capers, tomatoes, and miniature bagels with cream cheeses. Minimum 6. Serves 1 per person.", price: 19.95, icon: "🍣", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Savory Miniature Sandwiches and Pinwheels Platter", description: "Chef's selection of savory miniature sandwiches and pinwheels. 2 per guest. Minimum 6. Serves 1 per person.", price: 13.95, icon: "🥪", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Healthy Breakfast Platter", description: "Whole grain bagels/muffins/breads with low-fat spreads and vegetable cream cheeses. Minimum 6. Serves 1 per person.", price: 10.95, icon: "🍞", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            // Hot Breakfast
-            {title: "Hot Oatmeal Breakfast Tray", description: "Accompanied by granola, chopped fruits, berries, brown sugar, cinnamon, raisins, nuts and honey. Minimum 6. Serves 1 per person.", price: 8.50, icon: "🥣", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Hot Cream of Wheat Breakfast Tray", description: "Accompanied by granola, chopped fruits, berries, brown sugar, cinnamon, raisins, nuts and honey. Minimum 6. Serves 1 per person.", price: 8.50, icon: "🍚", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Breakfast Burritos, Panini, Croissant Tray", description: "Chef's selection of eggs/egg whites with breakfast meats and cheeses, served warm. Minimum 6. Serves 1 per person.", price: 10.95, icon: "🍳", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Omelette Buffet Breakfast Tray", description: "Assorted omelettes served warm with assorted bread, potatoes, breakfast meats, fruit, coffee, and orange juice. Minimum 6. Serves 1 per person.", price: 25.95, icon: "🥚", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Berry Pancake Trio and Crusted French Toast Tray", description: "Pancakes (buttermilk, strawberry, banana) and French toast, served with maple syrup and butter. Minimum 6. Serves 1 per person.", price: 11.95, icon: "🥞", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "The Belgian Waffle Breakfast Tray", description: "Plain or fruit-filled waffles with maple syrup, butter, whipped cream, and fruit sauce. Minimum 6. Serves 1 per person.", price: 9.95, icon: "🧇", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Omelettes Bar Breakfast Tray", description: "Made to order omelettes with 3 meat & 6 veggie selections, bread, fruit, coffee service, and fresh juice. Minimum 6. Serves 1 per person.", price: 26.95, icon: "👨‍🍳", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            // Light and Healthy Breakfast
-            {title: "Fruit Salad Breakfast Tray", description: "Selection of seasonal fruits, including: pineapple, honeydew, cantaloupe, papaya, berries and other exotic fruits. Minimum 6. Serves 1 per person.", price: 8.50, icon: "🍍", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Fruit Skewers Breakfast Tray", description: "Selection of cut-up seasonal fruits fixed on skewers. Minimum 6. Serves 1 per person.", price: 9.50, icon: "🍡", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Sliced Fruits Breakfast Tray", description: "Arranged and garnished selection of fresh seasonal fruits. Minimum 6. Serves 1 per person.", price: 8.50, icon: "🥝", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Whole Fruits Breakfast Tray", description: "Red delicious/granny smith apples, oranges, bananas, grapes and other seasonal fruits. Minimum 6.", price: 4.95, icon: "🍎", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Mixed Berries Breakfast Tray", description: "Fresh seasonal berries in a bowl. Minimum 6. Serves 1 per person.", price: 9.95, icon: "🍓", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Homemade Individual Yogurt Parfait Tray", description: "Individual cups of low-fat yogurt layered with seasonal berries, bananas and homemade granola. Minimum 6. Serves 1 per person.", price: 7.95, icon: "🥛", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Yogurt Bar Breakfast Tray", description: "Low-fat plain, strawberry, and vanilla yogurt, homemade granola, sliced bananas, chopped fruits and seasonal berries. Minimum 6. Serves 1 per person.", price: 11.95, icon: "🥄", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Greek Yogurt Bar Breakfast Tray", description: "Greek low-fat plain, strawberry and vanilla yogurt, homemade granola and sliced bananas, chopped fruits and seasonal berries. Minimum 6.", price: 8.95, icon: "🇬🇷", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            // Breakfast Packages
-            {title: "Continental Corporate Breakfast Package", description: "Sliced fresh fruit platter and assorted mini bagels, mini muffins, danishes, croissants and pastries with spreads. Minimum 8. Serves 1 per person.", price: 15.95, icon: "☕", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Continental Executive Breakfast Package", description: "Assorted mini pastries, sliced fresh fruit platter, freshly squeezed orange juice and coffee service. Minimum 8. Serves 1 per person.", price: 17.95, icon: "💼", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Executive Breakfast Package", description: "Assorted cheeses, mini muffins, mini croissants, loaf cakes, cranberry raisin nut rolls, sweet butter and preserves. Minimum 6. Serves 1 per person.", price: 16.95, icon: "🧀", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Board of Directors Breakfast Package", description: "Mini bagels, pastries, grilled wraps, yogurt parfait bar, fruit skewers, juices, coffee, and water. Minimum 10. Serves 1 per person.", price: 29.95, icon: "👑", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Spa Breakfast Package", description: "Whole grain items, Greek yogurt with honey/granola/fruit, and hard boiled eggs. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🧘", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "American Breakfast Package", description: "Fresh scrambled eggs, pancakes/French toast, breakfast meats, potatoes, pastries, bagels, coffee, and juices. Minimum 10. Serves 1 per person.", price: 21.95, icon: "🇺🇸", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "El Mariachi Breakfast Package", description: "Scrambled eggs, bacon, sausage, refried beans, warm tortillas, cheese, pico de gallo, sour cream, guacamole, and salsa. Minimum 10. Serves 1 per person.", price: 21.95, icon: "🇲🇽", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Brunch Buffet Breakfast Package", description: "Lox, eggs Benedict, waffles, scrambled eggs, meats, potatoes, fruit, pastries, and beverages. Minimum 10. Serves 1 per person.", price: 28.95, icon: "🥂", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            // Different Breakfast
-            {title: "Frittata Primavera Diamonds Breakfast Tray", description: "Baked with whole eggs or egg whites. Your choice of style. Minimum 6. Serves 1 per person.", price: 9.95, icon: "💎", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Strata Breakfast Tray", description: "Savory baked casserole layered with bread, eggs, and cheese. Minimum 6. Serves 1 per person.", price: 15.50, icon: "🍞", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "Large Quiche Breakfast Pie", description: "Chef's selection of large quiche pie. Serves 8-10 people.", price: 25.00, icon: "🥧", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            {title: "French Crepe Melody Breakfast Tray", description: "Cheese blitzes with apple sauce/sour cream/blueberry compote, or savory crepes. Minimum 6. Serves 1 per person.", price: 12.95, icon: "🇫🇷", cuisine: "Breakfast/Brunch", course: "Breakfast"},
-            // Breakfast Beverages (Updated Prices/Min)
-            {title: "Freshly Squeezed Juice (Breakfast)", description: "Assorted freshly squeezed juices. Minimum 6. Serves 1 per person.", price: 4.50, icon: "🍹", cuisine: "Beverages", course: "Beverage"},
-            {title: "Fully Coffee and Tea Service (Breakfast)", description: "Complete service including fresh coffee and tea assortment. Minimum 6. Serves 1 per person.", price: 5.99, icon: "🍵", cuisine: "Beverages", course: "Beverage"},
-            {title: "Only Coffee (Breakfast)", description: "Freshly brewed house blend coffee service. Minimum 6. Serves 1 per person.", price: 3.99, icon: "☕", cuisine: "Beverages", course: "Beverage"},
-            {title: "Only Tea (Breakfast)", description: "Assorted tea selection service. Minimum 6. Serves 1 per person.", price: 3.99, icon: "🫖", cuisine: "Beverages", course: "Beverage"},
-            {title: "Hot Chocolate (Breakfast)", description: "Hot Belgian chocolate served with steamed milk and sweeteners. Minimum 6. Serves 1 per person.", price: 4.95, icon: "🍫", cuisine: "Beverages", course: "Beverage"},
-            {title: "Hot Apple Cider (Breakfast)", description: "Warm, spiced apple cider. Minimum 6. Serves 1 per person.", price: 4.95, icon: "🍎", cuisine: "Beverages", course: "Beverage"},
-            {title: "Assorted Canned Beverages (Breakfast)", description: "A selection of sodas and soft drinks. Minimum 6. Serves 1 per person.", price: 3.00, icon: "🥤", cuisine: "Beverages", course: "Beverage"},
-            {title: "Spring Water (Breakfast)", description: "Bottled natural spring water. Minimum 6.", price: 2.00, icon: "💧", cuisine: "Beverages", course: "Beverage"},
-            {title: "Snapple (Breakfast)", description: "Premium fruit-flavored drink. Minimum 6. Serves 1 per person.", price: 3.99, icon: "🍹", cuisine: "Beverages", course: "Beverage"},
-            {title: "San Pellegrino (Breakfast)", description: "Sparkling Italian mineral water. Minimum 6. Serves 1 per person.", price: 4.00, icon: "🍾", cuisine: "Beverages", course: "Beverage"},
-            {title: "Perrier (Breakfast)", description: "Carbonated natural spring water. Minimum 6. Serves 1 per person.", price: 4.95, icon: "🍾", cuisine: "Beverages", course: "Beverage"},
-            {title: "Individual Juice (Breakfast)", description: "Assorted single-serving fruit juices. Minimum 6. Serves 1 per person.", price: 4.95, icon: "🍊", cuisine: "Beverages", course: "Beverage"},
-            // --- NEW SALAD ENTREES ---
-            {title: "California Chicken Salad Tray", description: "Grilled chicken, avocado, asparagus, goat cheese, and red onion on mixed greens. Served with sliced baguette. Minimum 6.", price: 14.95, icon: "🥗", cuisine: "American", course: "Main Course"},
-            {title: "Mediterranean Rosemary Chicken and Figs Salad Tray", description: "Chicken, olives, mushrooms, red peppers, goat cheese, almonds, and apples on field greens. Served with sliced baguette. Minimum 6.", price: 14.95, icon: "🥙", cuisine: "Mediterranean", course: "Main Course"},
-            {title: "Grilled Chicken Caesar Salad Tray", description: "Marinated chicken breast, crisp romaine, garlic Parmesan croutons, Roma tomatoes, and Caesar dressing. Served with sliced baguette. Minimum 6.", price: 12.95, icon: "🐔", cuisine: "Italian", course: "Main Course"},
-            {title: "Pesto Grilled Jumbo Shrimp Salad Tray", description: "Shrimp over baby greens with toasted hazelnuts, goat cheese, roasted fennel, grilled asparagus, and olives. Served with sliced baguette. Minimum 6.", price: 16.95, icon: "🦐", cuisine: "Italian", course: "Main Course"},
-            {title: "Sesame Seared Tuna Salad Tray", description: "Sashimi grade tuna, shiitake mushrooms and cellophane noodles. Served with sliced baguette. Minimum 6.", price: 17.95, icon: "🍣", cuisine: "Asian", course: "Main Course"},
-            {title: "Asian Tuna Salad Tray", description: "Grilled yellowfin tuna with Chinese cabbage, bok choy, carrots, cucumbers, scallions, and orange soy ginger dressing. Served with sliced baguette. Minimum 6.", price: 17.95, icon: "🥢", cuisine: "Asian", course: "Main Course"},
-            {title: "Grilled Salmon Nicoise Salad Tray", description: "Grilled salmon with lemon zested green beans, potatoes, tomatoes, hard boiled eggs and olives over romaine. Served with sliced baguette. Minimum 6.", price: 15.95, icon: "🐟", cuisine: "French", course: "Main Course"},
-            {title: "Grilled Tuna Nicoise Salad Tray", description: "Grilled tuna with lemon zested green beans, potatoes, tomatoes, hard boiled eggs and olives over romaine. Served with sliced baguette. Minimum 6.", price: 17.95, icon: "🎣", cuisine: "French", course: "Main Course"},
-            {title: "Filet Mignon Salad Tray", description: "Served on a bed of arugula with roasted peppers, caramelized onions and grilled portobello mushrooms. Served with sliced baguette. Minimum 6.", price: 18.95, icon: "🥩", cuisine: "American", course: "Main Course"},
-            {title: "Santa Fe BBQ Shrimp Salad Tray", description: "Jumbo imported shrimp tossed with homemade BBQ sauce, sweet corn, black beans, diced tomatoes and lime vinaigrette. Served with sliced baguette. Minimum 6.", price: 16.95, icon: "🌶️", cuisine: "Mexican", course: "Main Course"},
-            {title: "Roasted Big Vegetable Salad Tray", description: "Fresh roasted carrots, mushrooms, Brussels sprouts, asparagus, sweet corn and broccoli mixed with organic baby greens. Served with sliced baguette. Minimum 6.", price: 12.95, icon: "🥕", cuisine: "American", course: "Main Course"},
-            // --- NEW POULTRY ENTREES (UNIQUE ENTRIES) ---
-            {title: "Apricot Ginger Chicken Breast Tray", description: "Marinated with fresh ginger, apricot preserve, soy sauce, scallions and cilantro. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🐔", cuisine: "Asian", course: "Main Course"},
-            {title: "Curried Chicken Tray", description: "Comes with potatoes, carrots, onions, raisins, toasted coconut and chopped fresh mint. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🍛", cuisine: "Indian", course: "Main Course"},
-            {title: "Tamari Glazed Chicken Tray", description: "Shiitake mushrooms, red peppers and cilantro. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🥢", cuisine: "Asian", course: "Main Course"},
-            {title: "Balsamic Glazed Breast of Chicken Tray", description: "Diced Roma tomatoes and basil. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🍅", cuisine: "Italian", course: "Main Course"},
-            {title: "Citrus Glazed Chicken Tray", description: "Comes with orange sweet and sour glaze. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🍊", cuisine: "American", course: "Main Course"},
-            {title: "Apricot Chicken Tray", description: "Boneless breast sauteed in a light cream sauce with dried apricots and Grand Marnier. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🍑", cuisine: "French", course: "Main Course"},
-            {title: "Chicken a la Greque Tray", description: "Grilled chicken, garlic sauce, tomatoes, Kalamata olives, feta, parsley and lemon. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🇬🇷", cuisine: "Mediterranean", course: "Main Course"},
-            {title: "Chicken Tikka Masala Tray", description: "Chicken, tikka masala sauce, green onions, eggplant, red peppers, cilantro and lemon. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🌶️", cuisine: "Indian", course: "Main Course"},
-            {title: "Chicken Savoyard Tray", description: "Made in creamy sauce of Gruyere, white wine, Dijon mustard and tarragon. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🧀", cuisine: "French", course: "Main Course"},
-            {title: "Chicken Milanese Tray", description: "Parmesan crusted chicken with baby spinach, tomatoes and balsamic sauce. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🇮🇹", cuisine: "Italian", course: "Main Course"},
-            {title: "Chicken Marseille Tray", description: "Sauteed medallion of chicken with artichoke hearts, eggplant and vine ripe tomatoes in a Chardonnay sauce. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🇫🇷", cuisine: "French", course: "Main Course"},
-            {title: "Stuffed Chicken Roulade with Fresh Mozzarella Tray", description: "Spinach, roasted pepper and sun-dried tomatoes in a beurre blanc cream sauce. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🐔", cuisine: "Italian", course: "Main Course"},
-            {title: "Stuffed Chicken Roulade with Spinach Tray", description: "Boursin cheese and sun-dried tomatoes. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🥬", cuisine: "French", course: "Main Course"},
-            {title: "Stuffed Chicken Roulade with Portobello Mushrooms Tray", description: "Sweet peppers with an aged balsamic and fig honey glaze. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🍄", cuisine: "Italian", course: "Main Course"},
-            {title: "Stuffed Chicken Roulade with Herb Goat Cheese Tray", description: "Portobello mushrooms, asparagus and red pepper coulis. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🐐", cuisine: "French", course: "Main Course"},
-            {title: "Chicken Kebab with Tahini Dip Tray", description: "Served with a basket of brick oven bread and a side of garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: " skewers", cuisine: "Mediterranean", course: "Main Course"},
-            {title: "Stuffed Poussin Tray", description: "Comes with risotto and wild mushrooms. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🍚", cuisine: "French", course: "Main Course"},
-            {title: "Sage Infused Roasted Turkey Tray", description: "Turkey breast with cranberry orange relish. Served with bread and garden salad. Minimum 6.", price: 15.95, icon: "🦃", cuisine: "American", course: "Main Course"},
-            {title: "Sun-Dried Tomato and Parmesan Crusted Chicken Tray", description: "Artichoke, tomato and roasted pepper relish. Served with bread and garden salad. Minimum 6.", price: 15.95, icon: "🍅", cuisine: "Italian", course: "Main Course"},
-            {title: "Mexicali Chicken Tray", description: "Melted sharp cheddar, pico de gallo, peppers and onions. Served with bread and garden salad. Minimum 6. Serves 1 per person.", price: 18.95, icon: "🇲🇽", cuisine: "Mexican", course: "Main Course"},
-            {title: "Chicken Marsala Tray", description: "Mushroom Marsala sauce. Served with bread and garden salad. Minimum 6.", price: 15.95, icon: "🍄", cuisine: "Italian", course: "Main Course"},
-            {title: "Sesame Crusted Teriyaki Chicken Tray", description: "Sauteed bok choy. Served with bread and garden salad. Minimum 6.", price: 15.95, icon: "🍣", cuisine: "Asian", course: "Main Course"},
-            {title: "Skinless Crisp Oven Fried Chicken Tray", description: "Cornflake and rosemary crust. Served with bread and garden salad. Minimum 6.", price: 15.95, icon: "🍗", cuisine: "American", course: "Main Course"},
-            {title: "Traditional Southern Fried Chicken Tray", description: "Marinated in buttermilk, herbs and spices. Served with bread and garden salad. Minimum 6.", price: 15.95, icon: "🍗", cuisine: "American", course: "Main Course"},
-            {title: "Roasted Garlic Lemon Herb Chicken Tray", description: "Roasted vegetable melange, fresh lemon zest and roasted garlic and herbs. Served with bread and garden salad. Minimum 6.", price: 15.95, icon: "🍋", cuisine: "Mediterranean", course: "Main Course"},
-            {title: "Stir-Fried Chicken Tray", description: "Peppers, onions, green beans and water chestnuts in a garlic oyster sauce. Served with bread and garden salad. Minimum 6.", price: 15.95, icon: "🥢", cuisine: "Asian", course: "Main Course"},
-            {title: "Lemon Dijon Chicken Tray", description: "Roasted artichoke hearts, sun-dried tomatoes and basil and lemon Dijon sauce. Served with bread and garden salad. Minimum 6.", price: 15.95, icon: "🍋", cuisine: "French", course: "Main Course"},
-        ];
-
-        // Filter State - NOW ARRAYS FOR MULTI-SELECTION
-        let currentCuisineFilters = []; // Array of selected cuisines
-        let currentCourseFilters = []; // Array of selected courses
-        let searchTerm = '';
-
-        const cuisines = ['Asian', 'American', 'Italian', 'Mexican', 'Mediterranean', 'French', 'Beverages', 'Breakfast/Brunch', 'Indian'];
-        const courses = ['Appetizer', 'Main Course', 'Side Dish', 'Dessert', 'Beverage', 'Catering Tray', 'Breakfast']; // Added Breakfast
-
-        let selectedPackage = null;
-        let selectedPackageMinimum = 0;
-        let itemQuantities = {};
-
-        // --- Core Navigation and UI Functions ---
-
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            window.scrollTo(0, 0);
-
-            if (pageId === 'menu') {
-                renderFilterControls('menu');
-                renderMenuDisplay();
-            } else if (pageId === 'order') {
-                renderFilterControls('order');
-                renderOrderBuilder();
-                updateOrderSummary();
-            }
-        }
-        
-        function scrollToSection(sectionId) {
-            showPage('home'); // Ensure we are on the home page before scrolling
-            setTimeout(() => {
-                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-            }, 50);
-        }
-        
-        function handleContactSubmit(event) {
-            event.preventDefault();
-            console.log('Contact form submitted');
-            alert('Thank you for your message! We will get back to you shortly.');
-            event.target.reset();
-        }
-
-        // --- Filter Control Rendering & Logic ---
-
-        function setFilter(type, value) {
-            let filtersArray = type === 'cuisine' ? currentCuisineFilters : currentCourseFilters;
-            const index = filtersArray.indexOf(value);
-
-            if (index > -1) {
-                // Filter is currently active, deselect it (remove from array)
-                filtersArray.splice(index, 1);
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
             } else {
-                // Filter is inactive, select it (add to array)
-                filtersArray.push(value);
+                navbar.classList.remove('scrolled');
             }
-            
-            // Ensure the global references are updated (though they are references, good practice)
-            if (type === 'cuisine') {
-                currentCuisineFilters = filtersArray;
-            } else {
-                currentCourseFilters = filtersArray;
-            }
-
-            // Re-render controls to highlight active buttons
-            renderFilterControls('menu');
-            renderFilterControls('order');
-
-            // Re-render menu/order list
-            renderMenuDisplay();
-            renderOrderBuilder();
-        }
-
-        function updateSearch(event) {
-            searchTerm = event.target.value.toLowerCase().trim();
-            // Re-render menu/order list
-            renderMenuDisplay();
-            renderOrderBuilder();
-        }
-
-        function renderFilterControls(page) {
-            const containerId = page === 'menu' ? 'menuFilterControls' : 'orderFilterControls';
-            const container = document.getElementById(containerId);
-            
-            let html = '';
-
-            // Search Bar
-            html += '<div class="form-group">' +
-                        '<input type="text" class="search-input" placeholder="Search item by title or description..." oninput="updateSearch(event)" value="' + searchTerm + '">' +
-                    '</div>';
-
-            // Cuisine Filters
-            html += '<h3>Filter by Cuisine: <span style="font-size: 0.9rem; color: #999;">(Select one or more)</span></h3>' +
-                    '<div class="filter-group">';
-            
-            cuisines.forEach(c => {
-                // Check if the cuisine is IN the array
-                const active = currentCuisineFilters.includes(c) ? 'active' : '';
-                html += '<button class="filter-button ' + active + '" onclick="setFilter(\'cuisine\', \'' + c + '\')">' + c + '</button>';
-            });
-            html += '</div>';
-
-            // Course Filters
-            html += '<h3>Filter by Course: <span style="font-size: 0.9rem; color: #999;">(Select one or more)</span></h3>' +
-                    '<div class="filter-group">';
-
-            courses.forEach(c => {
-                // Check if the course is IN the array
-                const active = currentCourseFilters.includes(c) ? 'active' : '';
-                html += '<button class="filter-button ' + active + '" onclick="setFilter(\'course\', \'' + c + '\')">' + c + '</button>';
-            });
-            html += '</div>';
-
-            container.innerHTML = html;
-        }
-
-        function applyFilters() {
-            return menuItems.filter(item => {
-                // 1. Cuisine Filter (Passes if currentCuisineFilters is empty OR item.cuisine is in the array)
-                const passesCuisine = currentCuisineFilters.length === 0 || currentCuisineFilters.includes(item.cuisine);
-                
-                // 2. Course Filter (Passes if currentCourseFilters is empty OR item.course is in the array)
-                const passesCourse = currentCourseFilters.length === 0 || currentCourseFilters.includes(item.course);
-                
-                // 3. Search Term Filter
-                const passesSearch = !searchTerm || 
-                                     item.title.toLowerCase().includes(searchTerm) || 
-                                     item.description.toLowerCase().includes(searchTerm);
-
-                return passesCuisine && passesCourse && passesSearch;
-            });
-        }
-
-
-        // --- Menu Rendering ---
-
-        function renderMenuDisplay() {
-            const grid = document.getElementById('menuDisplay');
-            const filteredItems = applyFilters();
-            let html = '';
-
-            if (filteredItems.length === 0) {
-                html = '<p style="text-align: center; padding: 2rem; color: #777;">No items match your current filter and search criteria.</p>';
-            } else {
-                filteredItems.forEach((item) => {
-                    // Find the original index to link itemQuantities
-                    const originalIndex = menuItems.findIndex(i => i.title === item.title && i.description === item.description); 
-                    // Fallback to simpler search if title/description combo isn't perfect (due to unique/duplicate filtering above)
-                    if (originalIndex === -1) {
-                         const searchIndex = menuItems.findIndex(i => i.title === item.title);
-                         if (searchIndex !== -1) {
-                             // Use first match if exact match wasn't found (for data that might have minor description variations)
-                             // Note: In real app, IDs would be used, but here index is safer.
-                             // For simplicity and stability with the deduplication, we will use the index from the map.
-                         }
-                    }
-
-                    html += '<div class="menu-item">' +
-                        '<div class="menu-item-image">' + item.icon + '</div>' + 
-                        '<div class="menu-item-content">' +
-                        '<h3 class="menu-item-title">' + item.title + '</h3>' +
-                        '<p style="font-size: 0.85rem; color: #a0522d; font-weight: 500;">' + item.cuisine + ' | ' + item.course + '</p>' +
-                        '<p class="menu-item-description">' + item.description + '</p>' +
-                        '<div class="menu-item-price">$' + item.price.toFixed(2) + '</div>' +
-                        '<button class="add-to-order-btn" onclick="addItemToOrderAndNavigate(' + originalIndex + ')">Add to Order</button>' +
-                        '</div></div>';
-                });
-            }
-            
-            grid.innerHTML = html;
-        }
-        
-        function addItemToOrderAndNavigate(originalIndex) {
-            // Pre-select the item quantity to 1 and navigate
-            itemQuantities[originalIndex] = (itemQuantities[originalIndex] || 0) + 1; 
-            showPage('order');
-            // Optional: scroll down to item selectors for better flow
-            document.getElementById('itemSelectors').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-
-        // --- Order Builder Functions ---
-
-        function renderOrderBuilder() {
-            const container = document.getElementById('itemSelectors');
-            const filteredItems = applyFilters();
-            let html = '';
-
-            // Check if items are filtered out entirely
-            if (filteredItems.length === 0 && (currentCuisineFilters.length > 0 || currentCourseFilters.length > 0 || searchTerm !== '')) {
-                 container.innerHTML = '<p style="text-align: center; padding: 2rem; color: #777;">No items match your current filter and search criteria. Clear your filters to see all options.</p>';
-                 return;
-            }
-            
-            menuItems.forEach((item, index) => {
-                const isVisible = filteredItems.includes(item);
-                const qty = itemQuantities[index] || 0;
-                
-                // An item is displayed if it matches current filters OR if it has a quantity greater than 0 
-                // (i.e., it's part of the order, even if filters change).
-                const shouldDisplay = isVisible || qty > 0;
-
-                if (shouldDisplay) {
-                    // Only apply 'hidden' class if it matches the current filters but has 0 quantity
-                    const hiddenClass = isVisible ? '' : 'hidden'; 
-                    
-                    html += '<div class="item-selector ' + hiddenClass + '">' +
-                        '<div class="item-info">' +
-                        '<strong style="font-size: 1.1rem;">' + item.icon + ' ' + item.title + '</strong> - <span style="color: #e67e22; font-weight: bold;">$' + item.price.toFixed(2) + '</span>' +
-                        '<p style="font-size: 0.85rem; color: #a0522d; font-weight: 500;">' + item.cuisine + ' | ' + item.course + '</p>' +
-                        '<p style="font-size: 0.85rem; color: #999;">' + item.description + '</p>' +
-                        '</div>' +
-                        '<div class="qty-controls">' +
-                        '<button class="qty-btn" onclick="updateItemQty(' + index + ', -1)">-</button>' +
-                        '<span class="qty-display" id="qty-' + index + '">' + qty + '</span>' +
-                        '<button class="qty-btn" onclick="updateItemQty(' + index + ', 1)">+</button>' +
-                        '</div>' +
-                        '</div>';
-                }
-            });
-            container.innerHTML = html;
-        }
-        
-        function selectPackage(packageName, minGuests) {
-            const allPackageCards = document.querySelectorAll('.package-card');
-            
-            allPackageCards.forEach(card => card.classList.remove('selected'));
-
-            if (selectedPackage === packageName) {
-                // Deselect
-                selectedPackage = null;
-                selectedPackageMinimum = 0;
-            } else {
-                // Select
-                selectedPackage = packageName;
-                selectedPackageMinimum = minGuests;
-                document.querySelector(`.package-card[data-package='${packageName}']`).classList.add('selected');
-            }
-            
-            checkGuestCountWarning();
-            updateOrderSummary();
-        }
-
-        function updateItemQty(index, delta) {
-            let currentQty = itemQuantities[index] || 0;
-            let newQty = currentQty + delta;
-
-            if (newQty < 0) newQty = 0;
-
-            itemQuantities[index] = newQty;
-
-            const qtyDisplay = document.getElementById('qty-' + index);
-            if (qtyDisplay) {
-                qtyDisplay.textContent = newQty;
-            }
-
-            updateOrderSummary();
-            renderOrderBuilder(); // Rerender to possibly hide items with 0 quantity if they didn't match filters
-        }
-
-        function checkGuestCountWarning() {
-            const guestCount = parseInt(document.getElementById('guestCount').value) || 0;
-            const warning = document.getElementById('packageWarning');
-
-            if (selectedPackage && guestCount > 0 && guestCount < selectedPackageMinimum) {
-                warning.innerHTML = '<strong>Warning:</strong> Your guest count is below the minimum for the **' + selectedPackage.toUpperCase() + ' package** (' + selectedPackageMinimum + ' guests required).';
-                warning.style.display = 'block';
-                return true;
-            } else {
-                warning.style.display = 'none';
-                return false;
-            }
-        }
-
-        function updateOrderSummary() {
-            const display = document.getElementById('orderSummaryDisplay');
-            let html = '';
-            let total = 0;
-
-            // 1. Calculate Package Total
-            if (selectedPackage) {
-                const prices = {bronze: 25, silver: 45, gold: 75};
-                const guests = parseInt(document.getElementById('guestCount').value) || 0;
-                const packageTotal = prices[selectedPackage] * guests;
-                if (guests > 0) {
-                    html += '<div class="summary-line"><span>' + selectedPackage.toUpperCase() + ' Package (' + guests + ' Guests @ $' + prices[selectedPackage] + '/pp)</span><span>$' + packageTotal.toFixed(2) + '</span></div>';
-                    total += packageTotal;
-                }
-            }
-
-            // 2. Calculate Individual Items Total
-            Object.keys(itemQuantities).forEach(index => {
-                const qty = itemQuantities[index];
-                if (qty > 0) {
-                    const item = menuItems[index];
-                    const itemTotal = item.price * qty;
-                    html += '<div class="summary-line"><span>' + item.title + ' (x' + qty + ')</span><span>$' + itemTotal.toFixed(2) + '</span></div>';
-                    total += itemTotal;
-                }
-            });
-
-            // 3. Display Final Total
-            if (total > 0) {
-                html += '<div class="summary-total"><div class="summary-line"><span>Estimated Total:</span><span>$' + total.toFixed(2) + '</span></div></div>';
-                html += '<p style="color: #666; font-size: 0.9rem; margin-top: 1rem;">*Final pricing will be confirmed during consultation</p>';
-            } else {
-                html = '<p style="color: #666;">Select items or a package to see your order summary</p>';
-            }
-
-            display.innerHTML = html;
-        }
-
-        function submitOrderInquiry(event) {
-            event.preventDefault();
-            const errorMessage = document.getElementById('inquiryErrorMessage');
-            errorMessage.style.display = 'none'; 
-            let errors = [];
-
-            const guestCount = parseInt(document.getElementById('guestCount').value);
-            const eventType = document.getElementById('eventType').value;
-            const inquiryName = document.getElementById('inquiryName').value.trim();
-            const inquiryEmail = document.getElementById('inquiryEmail').value.trim();
-            const inquiryPhone = document.getElementById('inquiryPhone').value.trim();
-
-            if (!eventType) {
-                errors.push("Please select an **Event Type**.");
-            }
-            if (isNaN(guestCount) || guestCount < 10) {
-                errors.push("Guest count must be 10 or more.");
-            }
-            
-            if (selectedPackage && guestCount < selectedPackageMinimum) {
-                 checkGuestCountWarning(); 
-                 errors.push('The **' + selectedPackage.toUpperCase() + ' Package** requires a minimum of ' + selectedPackageMinimum + ' guests.');
-            }
-
-            if (!inquiryName || !inquiryEmail || !inquiryPhone) {
-                errors.push("Please fill out all **required contact fields** (Name, Email, Phone).");
-            }
-            
-            if (errors.length > 0) {
-                errorMessage.innerHTML = '<strong>Submission Error:</strong><br>' + errors.join('<br>');
-                errorMessage.style.display = 'block';
-                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' }); 
-                return;
-            }
-
-            const orderData = {
-                eventType: eventType,
-                guestCount: guestCount,
-                selectedPackage: selectedPackage,
-                customItems: Object.keys(itemQuantities).filter(i => itemQuantities[i] > 0).map(i => ({
-                    title: menuItems[i].title,
-                    qty: itemQuantities[i],
-                    price: menuItems[i].price
-                })),
-                name: inquiryName,
-                email: inquiryEmail,
-                phone: inquiryPhone,
-                date: document.getElementById('eventDate').value,
-                location: document.getElementById('eventLocation').value,
-                notes: document.getElementById('inquiryNotes').value,
-                estimatedTotal: document.getElementById('orderSummaryDisplay').querySelector('.summary-total span:last-child')?.textContent || 'N/A'
-            };
-
-            console.log('Order Inquiry Submitted:', orderData);
-            // Using alert as a placeholder for confirmation, as requested to avoid custom modals for simplicity
-            alert('Thank you for your inquiry! We will contact you within 24 hours to discuss your event details and finalize your catering order.');
-
-            // Reset state and UI
-            itemQuantities = {};
-            selectedPackage = null;
-            selectedPackageMinimum = 0;
-            document.querySelectorAll('.package-card').forEach(card => card.classList.remove('selected'));
-            document.getElementById('orderForm').reset();
-            document.getElementById('packageWarning').style.display = 'none';
-            showPage('home');
-        }
-
-        // Global Event Listener for Guest Count Input
-        document.addEventListener('DOMContentLoaded', function() {
-            const guestInput = document.getElementById('guestCount');
-            if (guestInput) {
-                guestInput.addEventListener('input', function() {
-                    checkGuestCountWarning();
-                    updateOrderSummary();
-                });
-            }
-            // Initialize view
-            showPage('home');
         });
     </script>
 </body>
 </html>
-
