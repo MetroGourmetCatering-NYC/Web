@@ -11,7 +11,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Montserrat', sans-serif;
             background: #ffffff;
@@ -281,28 +281,120 @@
             color: #ffffff;
         }
 
-        @media (max-width: 768px) {
+        /* Enhanced mobile responsiveness */
+        @media (max-width: 1200px) {
             .nav-links {
-                gap: 1.5rem;
-                font-size: 0.85rem;
+                gap: 2rem;
+                font-size: 0.9rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 968px) {
+            nav {
+                padding: 1rem 3%;
+            }
+            
+            .nav-links {
+                gap: 1.2rem;
+                font-size: 0.8rem;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .page-header {
+                padding: 3rem 3%;
+            }
+            
+            .page-header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .packages-section {
+                padding: 4rem 3%;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .package-card {
+                padding: 2rem;
+            }
+            
+            .package-name {
+                font-size: 2rem;
+            }
+            
+            .package-price {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.8rem 3%;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+                font-size: 0.7rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
             }
 
             .page-header h1 {
                 font-size: 2.5rem;
             }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
 
             .packages-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .section-title {
+                font-size: 2rem;
+            }
 
             .form-row {
                 grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .form-container {
+                padding: 2rem;
+            }
+            
+            .submit-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .footer-links {
+                gap: 1rem;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-     Navigation 
+    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">Metro Gourmet</a>
@@ -317,13 +409,13 @@
         </div>
     </nav>
 
-     Page Header 
+    <!-- Page Header -->
     <div class="page-header">
         <h1>Order Your Event</h1>
         <p>Choose from our curated packages or customize your perfect catering experience</p>
     </div>
 
-     Packages Section 
+    <!-- Packages Section -->
     <section class="packages-section">
         <h2 class="section-title">Catering Packages</h2>
         <div class="packages-grid">
@@ -375,7 +467,7 @@
             </div>
         </div>
 
-         Order Form 
+        <!-- Order Form -->
         <div class="order-form-section">
             <div class="form-container">
                 <h2 class="section-title">Place Your Order</h2>
@@ -452,7 +544,7 @@
         </div>
     </section>
 
-     Footer 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
@@ -468,3 +560,4 @@
     </footer>
 </body>
 </html>
+
