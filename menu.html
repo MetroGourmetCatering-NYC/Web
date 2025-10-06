@@ -96,6 +96,129 @@
             margin: 1.5rem auto;
         }
 
+        /* Added search and filter section */
+        .search-filter-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem 2rem;
+            background: #f9f9f9;
+        }
+
+        .search-bar {
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 0;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
+        .filters-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .filter-group {
+            background: #ffffff;
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+        }
+
+        .filter-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-title.small {
+            font-size: 1.1rem;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border: 1px solid #e0e0e0;
+            background: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .filter-checkbox:hover {
+            border-color: #d4af37;
+            background: #fafafa;
+        }
+
+        .filter-checkbox input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #d4af37;
+        }
+
+        .filter-checkbox label {
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .filter-checkbox.active {
+            background: #d4af37;
+            border-color: #d4af37;
+            color: #ffffff;
+        }
+
+        .filter-checkbox.active label {
+            color: #ffffff;
+        }
+
+        .clear-filters {
+            margin-top: 1rem;
+            padding: 0.8rem 2rem;
+            background: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .clear-filters:hover {
+            background: #d4af37;
+        }
+
+        .results-count {
+            text-align: center;
+            padding: 1rem;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
         /* Menu Section */
         .menu-section {
             padding: 4rem 2rem;
@@ -124,6 +247,10 @@
             border: 1px solid #e0e0e0;
             overflow: hidden;
             transition: all 0.3s ease;
+        }
+
+        .menu-item.hidden {
+            display: none;
         }
 
         .menu-item:hover {
@@ -249,6 +376,10 @@
             .nav-links {
                 gap: 1.5rem;
             }
+
+            .filter-options {
+                gap: 0.5rem;
+            }
         }
 
         @media (max-width: 640px) {
@@ -268,6 +399,10 @@
                 flex-wrap: wrap;
                 gap: 1rem;
                 font-size: 0.85rem;
+            }
+
+            .filter-options {
+                flex-direction: column;
             }
         }
     </style>
@@ -295,11 +430,109 @@
         <p class="page-subtitle">Exquisite cuisine crafted for your special occasions</p>
     </div>
 
+    <!-- Added search bar and filter section -->
+    <div class="search-filter-section">
+        <div class="search-bar">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search for dishes...">
+        </div>
+
+        <div class="filters-container">
+            <!-- Cuisine Filter -->
+            <div class="filter-group">
+                <h3 class="filter-title">Cuisine Type</h3>
+                <div class="filter-options" id="cuisineFilters">
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="mediterranean" value="Mediterranean">
+                        <label for="mediterranean">Mediterranean</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="italian" value="Italian">
+                        <label for="italian">Italian</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="american" value="American">
+                        <label for="american">American</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="french" value="French">
+                        <label for="french">French</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="asian" value="Asian">
+                        <label for="asian">Asian</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="spanish" value="Spanish">
+                        <label for="spanish">Spanish</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meal Type Filter -->
+            <div class="filter-group">
+                <h3 class="filter-title">Meal Type</h3>
+                <div class="filter-options" id="mealFilters">
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="appetizer" value="Appetizer">
+                        <label for="appetizer">Appetizer</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="main-course" value="Main Course">
+                        <label for="main-course">Main Course</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="dessert" value="Dessert">
+                        <label for="dessert">Dessert</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="sides" value="Sides">
+                        <label for="sides">Sides</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Food Category Filter -->
+            <div class="filter-group">
+                <h3 class="filter-title small">Food Categories</h3>
+                <div class="filter-options" id="categoryFilters">
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="vegetarian" value="Vegetarian">
+                        <label for="vegetarian">Vegetarian</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="seafood" value="Seafood">
+                        <label for="seafood">Seafood</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="lamb" value="Lamb">
+                        <label for="lamb">Lamb</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="pasta" value="Pasta">
+                        <label for="pasta">Pasta</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="sweets" value="Sweets">
+                        <label for="sweets">Sweets</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="vegan" value="Vegan">
+                        <label for="vegan">Vegan</label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="clear-filters" id="clearFilters">Clear All Filters</button>
+        </div>
+
+        <div class="results-count" id="resultsCount"></div>
+    </div>
+
     <!-- Appetizers -->
     <section class="menu-section">
         <h2 class="category-title">Appetizers</h2>
         <div class="menu-grid">
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Mediterranean" data-meal="Appetizer" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Chicken Shawarma Pita">
                 </div>
@@ -324,7 +557,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Italian" data-meal="Appetizer" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Bruschetta">
                 </div>
@@ -349,7 +582,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Appetizer" data-category="Seafood">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Shrimp Cocktail">
                 </div>
@@ -374,7 +607,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Italian" data-meal="Appetizer" data-category="Vegetarian">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Caprese Salad">
                 </div>
@@ -399,7 +632,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Appetizer" data-category="Vegetarian">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Stuffed Mushrooms">
                 </div>
@@ -424,7 +657,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Asian" data-meal="Appetizer" data-category="Vegetarian">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Spring Rolls">
                 </div>
@@ -449,7 +682,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Appetizer" data-category="Seafood">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Crab Cakes">
                 </div>
@@ -474,7 +707,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="French" data-meal="Appetizer" data-category="Vegetarian">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Artisan Cheese Board">
                 </div>
@@ -499,7 +732,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Appetizer" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Mini Beef Sliders">
                 </div>
@@ -524,7 +757,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Mediterranean" data-meal="Appetizer" data-category="Vegan">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Hummus Trio">
                 </div>
@@ -549,7 +782,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Appetizer" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Bacon Wrapped Dates">
                 </div>
@@ -574,7 +807,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Appetizer" data-category="Seafood">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Fresh Oysters">
                 </div>
@@ -599,7 +832,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Appetizer" data-category="Vegetarian">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Spinach Artichoke Dip">
                 </div>
@@ -624,7 +857,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Asian" data-meal="Appetizer" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Chicken Satay">
                 </div>
@@ -649,7 +882,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Appetizer" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Deviled Eggs">
                 </div>
@@ -680,7 +913,7 @@
     <section class="menu-section">
         <h2 class="category-title">Main Courses</h2>
         <div class="menu-grid">
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="French" data-meal="Main Course" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Beef Wellington">
                 </div>
@@ -705,7 +938,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Main Course" data-category="Seafood">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Lobster Tail">
                 </div>
@@ -730,7 +963,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Italian" data-meal="Main Course" data-category="Vegetarian,Pasta">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Truffle Risotto">
                 </div>
@@ -755,7 +988,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Main Course" data-category="Seafood">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Grilled Salmon">
                 </div>
@@ -780,7 +1013,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Main Course" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Filet Mignon">
                 </div>
@@ -805,7 +1038,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Italian" data-meal="Main Course" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Chicken Marsala">
                 </div>
@@ -830,7 +1063,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Mediterranean" data-meal="Main Course" data-category="Lamb">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Rack of Lamb">
                 </div>
@@ -855,7 +1088,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Main Course" data-category="Seafood">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Chilean Sea Bass">
                 </div>
@@ -880,7 +1113,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="French" data-meal="Main Course" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Duck Confit">
                 </div>
@@ -905,7 +1138,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Italian" data-meal="Main Course" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Osso Buco">
                 </div>
@@ -930,7 +1163,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Italian" data-meal="Main Course" data-category="Vegetarian,Pasta">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Vegetable Lasagna">
                 </div>
@@ -955,7 +1188,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Main Course" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Pork Tenderloin">
                 </div>
@@ -980,7 +1213,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Spanish" data-meal="Main Course" data-category="Seafood">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Seafood Paella">
                 </div>
@@ -1005,7 +1238,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Main Course" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Prime Rib">
                 </div>
@@ -1030,7 +1263,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Mediterranean" data-meal="Main Course" data-category="">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Stuffed Chicken">
                 </div>
@@ -1061,7 +1294,7 @@
     <section class="menu-section">
         <h2 class="category-title">Desserts</h2>
         <div class="menu-grid">
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Chocolate Lava Cake">
                 </div>
@@ -1086,7 +1319,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Italian" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Tiramisu">
                 </div>
@@ -1111,7 +1344,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="French" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Crème Brûlée">
                 </div>
@@ -1136,7 +1369,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="New York Cheesecake">
                 </div>
@@ -1161,7 +1394,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Italian" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Panna Cotta">
                 </div>
@@ -1186,7 +1419,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="French" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Chocolate Mousse">
                 </div>
@@ -1211,7 +1444,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="French" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Fresh Fruit Tart">
                 </div>
@@ -1236,7 +1469,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Mediterranean" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Baklava">
                 </div>
@@ -1261,7 +1494,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Key Lime Pie">
                 </div>
@@ -1286,7 +1519,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="French" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Opera Cake">
                 </div>
@@ -1311,7 +1544,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Italian" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Cannoli">
                 </div>
@@ -1336,7 +1569,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Bread Pudding">
                 </div>
@@ -1361,7 +1594,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="French" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="French Macarons">
                 </div>
@@ -1386,7 +1619,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="American" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Apple Pie">
                 </div>
@@ -1411,7 +1644,7 @@
                 </div>
             </div>
 
-            <div class="menu-item">
+            <div class="menu-item" data-cuisine="Italian" data-meal="Dessert" data-category="Sweets">
                 <div class="item-image">
                     <img src="/placeholder.svg?height=250&width=400" alt="Artisan Gelato">
                 </div>
@@ -1439,6 +1672,108 @@
     </section>
 
     <script>
+        const searchInput = document.getElementById('searchInput');
+        const clearFiltersBtn = document.getElementById('clearFilters');
+        const resultsCount = document.getElementById('resultsCount');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        // Get all filter checkboxes
+        const cuisineCheckboxes = document.querySelectorAll('#cuisineFilters input[type="checkbox"]');
+        const mealCheckboxes = document.querySelectorAll('#mealFilters input[type="checkbox"]');
+        const categoryCheckboxes = document.querySelectorAll('#categoryFilters input[type="checkbox"]');
+
+        // Filter function
+        function filterMenu() {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            // Get selected filters
+            const selectedCuisines = Array.from(cuisineCheckboxes)
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+            
+            const selectedMeals = Array.from(mealCheckboxes)
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+            
+            const selectedCategories = Array.from(categoryCheckboxes)
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+
+            let visibleCount = 0;
+
+            menuItems.forEach(item => {
+                const title = item.querySelector('.item-title').textContent.toLowerCase();
+                const description = item.querySelector('.item-description').textContent.toLowerCase();
+                const cuisine = item.dataset.cuisine;
+                const meal = item.dataset.meal;
+                const categories = item.dataset.category.split(',').filter(c => c);
+
+                // Check search term
+                const matchesSearch = !searchTerm || 
+                    title.includes(searchTerm) || 
+                    description.includes(searchTerm);
+
+                // Check cuisine filter
+                const matchesCuisine = selectedCuisines.length === 0 || 
+                    selectedCuisines.includes(cuisine);
+
+                // Check meal filter
+                const matchesMeal = selectedMeals.length === 0 || 
+                    selectedMeals.includes(meal);
+
+                // Check category filter
+                const matchesCategory = selectedCategories.length === 0 || 
+                    selectedCategories.some(cat => categories.includes(cat));
+
+                // Show/hide item based on all filters
+                if (matchesSearch && matchesCuisine && matchesMeal && matchesCategory) {
+                    item.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            // Update results count
+            resultsCount.textContent = `Showing ${visibleCount} of ${menuItems.length} items`;
+        }
+
+        // Add event listeners
+        searchInput.addEventListener('input', filterMenu);
+
+        cuisineCheckboxes.forEach(cb => {
+            cb.addEventListener('change', function() {
+                this.parentElement.classList.toggle('active', this.checked);
+                filterMenu();
+            });
+        });
+
+        mealCheckboxes.forEach(cb => {
+            cb.addEventListener('change', function() {
+                this.parentElement.classList.toggle('active', this.checked);
+                filterMenu();
+            });
+        });
+
+        categoryCheckboxes.forEach(cb => {
+            cb.addEventListener('change', function() {
+                this.parentElement.classList.toggle('active', this.checked);
+                filterMenu();
+            });
+        });
+
+        // Clear all filters
+        clearFiltersBtn.addEventListener('click', function() {
+            searchInput.value = '';
+            
+            [...cuisineCheckboxes, ...mealCheckboxes, ...categoryCheckboxes].forEach(cb => {
+                cb.checked = false;
+                cb.parentElement.classList.remove('active');
+            });
+            
+            filterMenu();
+        });
+
         // Quantity selector functionality
         document.querySelectorAll('.qty-btn').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -1452,6 +1787,9 @@
                 }
             });
         });
+
+        // Initialize results count
+        filterMenu();
     </script>
 </body>
 </html>
