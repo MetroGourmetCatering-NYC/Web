@@ -52,7 +52,7 @@
             letter-spacing: 2px;
         }
 
-        /* Swipe Nav wrapper */
+        /* Swipe Nav wrapper (desktop default hidden overflow) */
         .nav-links-wrapper {
             display: flex;
             overflow-x: hidden;
@@ -448,16 +448,23 @@
                 padding: 0.8rem 3%;
             }
             
+            /* Make the nav swipeable on phones and hide the scrollbar */
             .nav-links-wrapper {
                 overflow-x: auto;
-                scroll-snap-type: x mandatory;
                 -webkit-overflow-scrolling: touch;
+                scroll-behavior: smooth;
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* IE 10+ */
+            }
+
+            .nav-links-wrapper::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, Edge */
             }
             
             .nav-links {
                 flex-wrap: nowrap;
                 gap: 1.5rem;
-                scroll-snap-align: start;
+                /* keep links on one line for horizontal swipe */
             }
 
             .nav-links a {
@@ -690,7 +697,7 @@
 </footer>
 
 <script>
-    // Fade-in effect for logo and favorite items
+    // Keep your original fade-in behavior (unchanged)
     function fadeInElements() {
         const elements = document.querySelectorAll('.logo-box, .item-image');
         elements.forEach(el => {
@@ -703,6 +710,57 @@
 
     window.addEventListener('scroll', fadeInElements);
     window.addEventListener('load', fadeInElements);
+
+    // --- Mobile infinite loop nav (duplicates only on small screens) ---
+    (function() {
+        const wrapper = document.querySelector('.nav-links-wrapper');
+        const links = wrapper.querySelector('.nav-links');
+
+        // Only enable loop behavior on small screens (phone)
+        function enableNavLoopIfMobile() {
+            const isMobile = window.matchMedia('(max-width: 640px)').matches;
+
+            // If not mobile, do nothing (no duplication)
+            if (!isMobile) {
+                return;
+            }
+
+            // Prevent duplicating multiple times
+            if (links.dataset.looped === 'true') return;
+
+            // Clone current items and append to create a seamless visual loop
+            const items = Array.from(links.children);
+            items.forEach(li => {
+                links.appendChild(li.cloneNode(true));
+            });
+
+            // mark as looped
+            links.dataset.looped = 'true';
+
+            // After cloning, guard against sudden jumps by adjusting position after paint
+            requestAnimationFrame(() => {
+                // We'll keep the scroll behavior simple: when user scrolls past half,
+                // we subtract half the width to continue the loop seamlessly.
+                const halfWidth = links.scrollWidth / 2;
+
+                wrapper.addEventListener('scroll', () => {
+                    // If user scrolled forward past the first set, jump back by halfWidth
+                    if (wrapper.scrollLeft >= halfWidth) {
+                        wrapper.scrollLeft = wrapper.scrollLeft - halfWidth;
+                    }
+                    // If user somehow is at or before 0 (fast reverse), push forward by halfWidth
+                    else if (wrapper.scrollLeft <= 0) {
+                        wrapper.scrollLeft = wrapper.scrollLeft + halfWidth;
+                    }
+                }, { passive: true });
+            });
+        }
+
+        // initialize on load
+        window.addEventListener('load', enableNavLoopIfMobile);
+        // also enable if user resizes to mobile size (once)
+        window.addEventListener('resize', enableNavLoopIfMobile);
+    })();
 </script>
 </body>
 </html>
