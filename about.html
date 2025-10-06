@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Metro Gourmet Catering & Events NYC</title>
+    <title>Order Now - Metro Gourmet Catering & Events NYC</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -66,7 +66,7 @@
             color: #D4AF37;
         }
 
-        /* Page Header */
+        /* Main Content */
         .page-header {
             margin-top: 100px;
             padding: 4rem 5%;
@@ -90,90 +90,164 @@
             margin: 0 auto;
         }
 
-        /* Content Section */
-        .content-section {
+        /* Packages Section */
+        .packages-section {
             padding: 5rem 5%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-        }
-
-        .story-section {
-            margin-bottom: 5rem;
         }
 
         .section-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
             color: #1a1a1a;
-            margin-bottom: 2rem;
-            text-align: center;
         }
 
-        .story-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #333;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .story-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        /* Values Grid */
-        .values-grid {
+        .packages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 3rem;
-            margin-top: 3rem;
+            margin-bottom: 5rem;
         }
 
-        .value-card {
-            text-align: center;
-            padding: 2rem;
+        .package-card {
+            background: white;
             border: 2px solid #D4AF37;
+            padding: 3rem;
+            text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .value-card:hover {
+        .package-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
         }
 
-        .value-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        .package-card.featured {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: white;
+            border: 3px solid #D4AF37;
         }
 
-        .value-title {
+        .package-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: #D4AF37;
             margin-bottom: 1rem;
         }
 
-        .value-description {
+        .package-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #D4AF37;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-per {
             font-size: 1rem;
             color: #666;
-            line-height: 1.6;
+            margin-bottom: 2rem;
         }
 
-        /* Team Section */
-        .team-section {
+        .featured .package-per {
+            color: #e0e0e0;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .package-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            font-size: 1rem;
+        }
+
+        .package-features li:before {
+            content: "✓ ";
+            color: #D4AF37;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Order Form */
+        .order-form-section {
             background: #f8f8f8;
             padding: 5rem 5%;
-            margin-top: 5rem;
         }
 
-        .team-intro {
-            text-align: center;
+        .form-container {
             max-width: 800px;
-            margin: 0 auto 3rem;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border: 2px solid #D4AF37;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #D4AF37;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .submit-btn {
+            background: #D4AF37;
+            color: #000000;
+            padding: 1.2rem 3rem;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.1rem;
-            color: #333;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: #000000;
+            color: #D4AF37;
         }
 
         /* Footer */
@@ -207,24 +281,120 @@
             color: #ffffff;
         }
 
-        @media (max-width: 768px) {
+        /* Enhanced mobile responsiveness */
+        @media (max-width: 1200px) {
             .nav-links {
-                gap: 1.5rem;
-                font-size: 0.85rem;
+                gap: 2rem;
+                font-size: 0.9rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 968px) {
+            nav {
+                padding: 1rem 3%;
+            }
+            
+            .nav-links {
+                gap: 1.2rem;
+                font-size: 0.8rem;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .page-header {
+                padding: 3rem 3%;
+            }
+            
+            .page-header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .packages-section {
+                padding: 4rem 3%;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .package-card {
+                padding: 2rem;
+            }
+            
+            .package-name {
+                font-size: 2rem;
+            }
+            
+            .package-price {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.8rem 3%;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+                font-size: 0.7rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
             }
 
             .page-header h1 {
                 font-size: 2.5rem;
             }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
 
-            .values-grid {
+            .packages-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .form-container {
+                padding: 2rem;
+            }
+            
+            .submit-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .footer-links {
+                gap: 1rem;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-     Navigation 
+    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">Metro Gourmet</a>
@@ -239,75 +409,142 @@
         </div>
     </nav>
 
-     Page Header 
+    <!-- Page Header -->
     <div class="page-header">
-        <h1>About Metro Gourmet</h1>
-        <p>Crafting unforgettable culinary experiences in the heart of New York City</p>
+        <h1>Order Your Event</h1>
+        <p>Choose from our curated packages or customize your perfect catering experience</p>
     </div>
 
-     Content Section 
-    <section class="content-section">
-        <div class="story-section">
-            <h2 class="section-title">Our Story</h2>
-            <div class="story-content">
-                <p>Founded in the heart of New York City, Metro Gourmet Catering & Events has been elevating celebrations and corporate gatherings for over a decade. What began as a passion for bringing people together through exceptional food has grown into one of NYC's most trusted catering services.</p>
-                
-                <p>Our journey started with a simple belief: every event deserves extraordinary cuisine. From intimate gatherings to grand celebrations, we've dedicated ourselves to creating memorable dining experiences that reflect the diverse culinary landscape of New York City.</p>
-                
-                <p>Today, Metro Gourmet stands as a testament to quality, creativity, and impeccable service. Our team of culinary artisans combines traditional techniques with innovative approaches, sourcing the finest ingredients to craft menus that delight and inspire.</p>
+    <!-- Packages Section -->
+    <section class="packages-section">
+        <h2 class="section-title">Catering Packages</h2>
+        <div class="packages-grid">
+            <div class="package-card">
+                <h3 class="package-name">Essential</h3>
+                <div class="package-price">$65</div>
+                <p class="package-per">per person</p>
+                <ul class="package-features">
+                    <li>Choice of 3 Appetizers</li>
+                    <li>Choice of 2 Main Courses</li>
+                    <li>2 Side Dishes</li>
+                    <li>Bread & Butter Service</li>
+                    <li>Basic Setup & Cleanup</li>
+                    <li>Disposable Serving Ware</li>
+                </ul>
+            </div>
+
+            <div class="package-card featured">
+                <h3 class="package-name">Premium</h3>
+                <div class="package-price">$95</div>
+                <p class="package-per">per person</p>
+                <ul class="package-features">
+                    <li>Choice of 5 Appetizers</li>
+                    <li>Choice of 3 Main Courses</li>
+                    <li>3 Side Dishes</li>
+                    <li>Salad Station</li>
+                    <li>Choice of 2 Desserts</li>
+                    <li>Professional Staff Service</li>
+                    <li>China & Glassware</li>
+                    <li>Full Setup & Cleanup</li>
+                </ul>
+            </div>
+
+            <div class="package-card">
+                <h3 class="package-name">Luxury</h3>
+                <div class="package-price">$145</div>
+                <p class="package-per">per person</p>
+                <ul class="package-features">
+                    <li>Unlimited Appetizer Selection</li>
+                    <li>Choice of 4 Premium Main Courses</li>
+                    <li>4 Gourmet Side Dishes</li>
+                    <li>Premium Salad & Cheese Station</li>
+                    <li>Choice of 3 Signature Desserts</li>
+                    <li>Dedicated Event Coordinator</li>
+                    <li>Premium China & Crystal</li>
+                    <li>Full-Service Staff</li>
+                    <li>Custom Menu Options</li>
+                </ul>
             </div>
         </div>
 
-         Values Section 
-        <div class="story-section">
-            <h2 class="section-title">Our Values</h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">🌟</div>
-                    <h3 class="value-title">Excellence</h3>
-                    <p class="value-description">We pursue perfection in every dish, ensuring each event exceeds expectations with uncompromising quality and attention to detail.</p>
-                </div>
+        <!-- Order Form -->
+        <div class="order-form-section">
+            <div class="form-container">
+                <h2 class="section-title">Place Your Order</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                    </div>
 
-                <div class="value-card">
-                    <div class="value-icon">🤝</div>
-                    <h3 class="value-title">Partnership</h3>
-                    <p class="value-description">Your vision becomes our mission. We work closely with clients to understand their needs and bring their culinary dreams to life.</p>
-                </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
 
-                <div class="value-card">
-                    <div class="value-icon">🎨</div>
-                    <h3 class="value-title">Creativity</h3>
-                    <p class="value-description">Innovation drives our menus. We blend global flavors with local ingredients to create unique, memorable dining experiences.</p>
-                </div>
+                    <div class="form-group">
+                        <label for="package">Select Package *</label>
+                        <select id="package" required>
+                            <option value="">Choose a package...</option>
+                            <option value="essential">Essential - $65/person</option>
+                            <option value="premium">Premium - $95/person</option>
+                            <option value="luxury">Luxury - $145/person</option>
+                            <option value="custom">Custom Package</option>
+                        </select>
+                    </div>
 
-                <div class="value-card">
-                    <div class="value-icon">♻️</div>
-                    <h3 class="value-title">Sustainability</h3>
-                    <p class="value-description">We're committed to responsible sourcing, supporting local farmers, and minimizing our environmental impact.</p>
-                </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventDate">Event Date *</label>
+                            <input type="date" id="eventDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guestCount">Number of Guests *</label>
+                            <input type="number" id="guestCount" min="10" required>
+                        </div>
+                    </div>
 
-                <div class="value-card">
-                    <div class="value-icon">💎</div>
-                    <h3 class="value-title">Integrity</h3>
-                    <p class="value-description">Honesty and transparency guide every decision. We build lasting relationships through trust and reliability.</p>
-                </div>
+                    <div class="form-group">
+                        <label for="eventType">Event Type *</label>
+                        <select id="eventType" required>
+                            <option value="">Select event type...</option>
+                            <option value="wedding">Wedding</option>
+                            <option value="corporate">Corporate Event</option>
+                            <option value="birthday">Birthday Party</option>
+                            <option value="anniversary">Anniversary</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
 
-                <div class="value-card">
-                    <div class="value-icon">❤️</div>
-                    <h3 class="value-title">Passion</h3>
-                    <p class="value-description">Food is our love language. Every event is an opportunity to share our passion for exceptional cuisine.</p>
-                </div>
+                    <div class="form-group">
+                        <label for="venue">Event Venue/Address *</label>
+                        <input type="text" id="venue" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="specialRequests">Special Requests or Dietary Restrictions</label>
+                        <textarea id="specialRequests" placeholder="Please let us know about any allergies, dietary restrictions, or special requests..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">SUBMIT ORDER REQUEST</button>
+                </form>
             </div>
         </div>
     </section>
 
-     Team Section 
-    <section class="team-section">
-        <h2 class="section-title">Our Team</h2>
-        <p class="team-intro">Behind every exceptional event is a dedicated team of culinary professionals, event coordinators, and service staff who share a commitment to excellence. Our chefs bring decades of combined experience from renowned kitchens across the globe, while our event specialists ensure every detail is executed flawlessly. Together, we create seamless experiences that allow you to enjoy your event while we handle everything else.</p>
-    </section>
-
-     Footer 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
@@ -323,3 +560,4 @@
     </footer>
 </body>
 </html>
+
