@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Metro Gourmet Catering & Events NYC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+        }
+
+        .page-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        .gold-line {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 1.5rem auto;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .menu-item {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+            border-color: #d4af37;
+        }
+
+        .item-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-info {
+            padding: 1.5rem;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.8rem;
+        }
+
+        .item-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .item-price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #d4af37;
+            white-space: nowrap;
+        }
+
+        .item-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .item-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag {
+            font-size: 0.85rem;
+            padding: 0.3rem 0.8rem;
+            background: #f5f5f5;
+            color: #666;
+            border-radius: 20px;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .quantity-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .qty-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #d4af37;
+            background: #ffffff;
+            color: #d4af37;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-btn:hover {
+            background: #d4af37;
+            color: #ffffff;
+        }
+
+        .qty-input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            padding: 0.3rem;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .category-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-text">MGC</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="order.html">Order Now</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="who-we-serve.html">Who We Serve</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Our Menu</h1>
+        <div class="gold-line"></div>
+        <p class="page-subtitle">Exquisite cuisine crafted for your special occasions</p>
+    </div>
+
+    <!-- Appetizers -->
+    <section class="menu-section">
+        <h2 class="category-title">Appetizers</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Chicken Shawarma Pita">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Chicken Shawarma Pita</h3>
+                        <span class="item-price">$42</span>
+                    </div>
+                    <p class="item-description">Marinated shawarma in pita bread with tahini sauce and fresh vegetables</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Mediterranean</span>
+                        <span class="meta-tag">Appetizer</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Bruschetta">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Bruschetta</h3>
+                        <span class="item-price">$38</span>
+                    </div>
+                    <p class="item-description">Toasted bread topped with fresh tomatoes, basil, and balsamic glaze</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Italian</span>
+                        <span class="meta-tag">Appetizer</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Shrimp Cocktail">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Shrimp Cocktail</h3>
+                        <span class="item-price">$52</span>
+                    </div>
+                    <p class="item-description">Jumbo shrimp served with zesty cocktail sauce and lemon</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Seafood</span>
+                        <span class="meta-tag">Appetizer</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Caprese Salad">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Caprese Salad</h3>
+                        <span class="item-price">$36</span>
+                    </div>
+                    <p class="item-description">Fresh mozzarella, tomatoes, and basil drizzled with olive oil</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Italian</span>
+                        <span class="meta-tag">Vegetarian</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Stuffed Mushrooms">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Stuffed Mushrooms</h3>
+                        <span class="item-price">$44</span>
+                    </div>
+                    <p class="item-description">Button mushrooms filled with herb cream cheese and breadcrumbs</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Vegetarian</span>
+                        <span class="meta-tag">Appetizer</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Spring Rolls">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Spring Rolls</h3>
+                        <span class="item-price">$40</span>
+                    </div>
+                    <p class="item-description">Crispy vegetable spring rolls with sweet chili dipping sauce</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Asian</span>
+                        <span class="meta-tag">Vegetarian</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Crab Cakes">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Crab Cakes</h3>
+                        <span class="item-price">$58</span>
+                    </div>
+                    <p class="item-description">Maryland-style crab cakes with remoulade sauce</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Seafood</span>
+                        <span class="meta-tag">Premium</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Artisan Cheese Board">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Artisan Cheese Board</h3>
+                        <span class="item-price">$65</span>
+                    </div>
+                    <p class="item-description">Selection of imported cheeses with crackers, fruits, and nuts</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Vegetarian</span>
+                        <span class="meta-tag">Premium</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Mini Beef Sliders">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Mini Beef Sliders</h3>
+                        <span class="item-price">$48</span>
+                    </div>
+                    <p class="item-description">Angus beef sliders with caramelized onions and special sauce</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">American</span>
+                        <span class="meta-tag">Appetizer</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Hummus Trio">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Hummus Trio</h3>
+                        <span class="item-price">$35</span>
+                    </div>
+                    <p class="item-description">Classic, roasted red pepper, and garlic hummus with pita</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Mediterranean</span>
+                        <span class="meta-tag">Vegan</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Bacon Wrapped Dates">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Bacon Wrapped Dates</h3>
+                        <span class="item-price">$46</span>
+                    </div>
+                    <p class="item-description">Medjool dates stuffed with goat cheese and wrapped in bacon</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Gourmet</span>
+                        <span class="meta-tag">Appetizer</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Fresh Oysters">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Fresh Oysters</h3>
+                        <span class="item-price">$72</span>
+                    </div>
+                    <p class="item-description">Half dozen fresh oysters on ice with mignonette sauce</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Seafood</span>
+                        <span class="meta-tag">Premium</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Spinach Artichoke Dip">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Spinach Artichoke Dip</h3>
+                        <span class="item-price">$38</span>
+                    </div>
+                    <p class="item-description">Creamy spinach and artichoke dip served with tortilla chips</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Vegetarian</span>
+                        <span class="meta-tag">Appetizer</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Chicken Satay">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Chicken Satay</h3>
+                        <span class="item-price">$44</span>
+                    </div>
+                    <p class="item-description">Grilled chicken skewers with peanut sauce and cucumber salad</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Asian</span>
+                        <span class="meta-tag">Appetizer</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Deviled Eggs">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Deviled Eggs</h3>
+                        <span class="item-price">$32</span>
+                    </div>
+                    <p class="item-description">Classic deviled eggs topped with paprika and chives</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Classic</span>
+                        <span class="meta-tag">Appetizer</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Courses -->
+    <section class="menu-section">
+        <h2 class="category-title">Main Courses</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Beef Wellington">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Beef Wellington</h3>
+                        <span class="item-price">$85</span>
+                    </div>
+                    <p class="item-description">Tender beef wrapped in puff pastry with mushroom duxelles</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">French</span>
+                        <span class="meta-tag">Premium</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Lobster Tail">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Lobster Tail</h3>
+                        <span class="item-price">$95</span>
+                    </div>
+                    <p class="item-description">Butter-poached lobster tail with lemon herb butter</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Seafood</span>
+                        <span class="meta-tag">Luxury</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Truffle Risotto">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Truffle Risotto</h3>
+                        <span class="item-price">$58</span>
+                    </div>
+                    <p class="item-description">Creamy arborio rice with black truffle and parmesan</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Italian</span>
+                        <span class="meta-tag">Vegetarian</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Grilled Salmon">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Grilled Salmon</h3>
+                        <span class="item-price">$68</span>
+                    </div>
+                    <p class="item-description">Atlantic salmon with dill cream sauce and asparagus</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Seafood</span>
+                        <span class="meta-tag">Healthy</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Filet Mignon">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Filet Mignon</h3>
+                        <span class="item-price">$92</span>
+                    </div>
+                    <p class="item-description">8oz center-cut filet with red wine reduction and roasted vegetables</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Steakhouse</span>
+                        <span class="meta-tag">Premium</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Chicken Marsala">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Chicken Marsala</h3>
+                        <span class="item-price">$54</span>
+                    </div>
+                    <p class="item-description">Pan-seared chicken breast with marsala wine mushroom sauce</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Italian</span>
+                        <span class="meta-tag">Main Course</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Rack of Lamb">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Rack of Lamb</h3>
+                        <span class="item-price">$88</span>
+                    </div>
+                    <p class="item-description">Herb-crusted lamb rack with mint chimichurri</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Mediterranean</span>
+                        <span class="meta-tag">Premium</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Chilean Sea Bass">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Chilean Sea Bass</h3>
+                        <span class="item-price">$82</span>
+                    </div>
+                    <p class="item-description">Pan-seared sea bass with citrus beurre blanc</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Seafood</span>
+                        <span class="meta-tag">Luxury</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Duck Confit">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Duck Confit</h3>
+                        <span class="item-price">$76</span>
+                    </div>
+                    <p class="item-description">Slow-cooked duck leg with orange glaze and wild rice</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">French</span>
+                        <span class="meta-tag">Gourmet</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Osso Buco">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Osso Buco</h3>
+                        <span class="item-price">$78</span>
+                    </div>
+                    <p class="item-description">Braised veal shanks with gremolata and risotto milanese</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Italian</span>
+                        <span class="meta-tag">Premium</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Vegetable Lasagna">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Vegetable Lasagna</h3>
+                        <span class="item-price">$48</span>
+                    </div>
+                    <p class="item-description">Layers of pasta with roasted vegetables and ricotta</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Italian</span>
+                        <span class="meta-tag">Vegetarian</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Pork Tenderloin">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Pork Tenderloin</h3>
+                        <span class="item-price">$62</span>
+                    </div>
+                    <p class="item-description">Roasted pork tenderloin with apple chutney and sweet potato mash</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">American</span>
+                        <span class="meta-tag">Main Course</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Seafood Paella">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Seafood Paella</h3>
+                        <span class="item-price">$72</span>
+                    </div>
+                    <p class="item-description">Spanish rice with shrimp, mussels, and saffron</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Spanish</span>
+                        <span class="meta-tag">Seafood</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Prime Rib">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Prime Rib</h3>
+                        <span class="item-price">$86</span>
+                    </div>
+                    <p class="item-description">Slow-roasted prime rib with au jus and horseradish cream</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Steakhouse</span>
+                        <span class="meta-tag">Premium</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Stuffed Chicken">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Stuffed Chicken Breast</h3>
+                        <span class="item-price">$56</span>
+                    </div>
+                    <p class="item-description">Chicken breast stuffed with spinach, feta, and sun-dried tomatoes</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Mediterranean</span>
+                        <span class="meta-tag">Main Course</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desserts -->
+    <section class="menu-section">
+        <h2 class="category-title">Desserts</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Chocolate Lava Cake">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Chocolate Lava Cake</h3>
+                        <span class="item-price">$32</span>
+                    </div>
+                    <p class="item-description">Warm chocolate cake with molten center and vanilla ice cream</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Dessert</span>
+                        <span class="meta-tag">Popular</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Tiramisu">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Tiramisu</h3>
+                        <span class="item-price">$28</span>
+                    </div>
+                    <p class="item-description">Classic Italian dessert with espresso-soaked ladyfingers and mascarpone</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Italian</span>
+                        <span class="meta-tag">Dessert</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Crème Brûlée">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Crème Brûlée</h3>
+                        <span class="item-price">$30</span>
+                    </div>
+                    <p class="item-description">Vanilla custard with caramelized sugar crust</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">French</span>
+                        <span class="meta-tag">Classic</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="New York Cheesecake">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">New York Cheesecake</h3>
+                        <span class="item-price">$26</span>
+                    </div>
+                    <p class="item-description">Creamy cheesecake with graham cracker crust and berry compote</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">American</span>
+                        <span class="meta-tag">Dessert</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Panna Cotta">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Panna Cotta</h3>
+                        <span class="item-price">$24</span>
+                    </div>
+                    <p class="item-description">Silky Italian cream dessert with mixed berry sauce</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Italian</span>
+                        <span class="meta-tag">Light</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Chocolate Mousse">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Chocolate Mousse</h3>
+                        <span class="item-price">$22</span>
+                    </div>
+                    <p class="item-description">Rich dark chocolate mousse with whipped cream</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">French</span>
+                        <span class="meta-tag">Chocolate</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Fresh Fruit Tart">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Fresh Fruit Tart</h3>
+                        <span class="item-price">$28</span>
+                    </div>
+                    <p class="item-description">Buttery tart shell with pastry cream and seasonal fruits</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">French</span>
+                        <span class="meta-tag">Fresh</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Baklava">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Baklava</h3>
+                        <span class="item-price">$20</span>
+                    </div>
+                    <p class="item-description">Layers of phyllo pastry with honey and pistachios</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Mediterranean</span>
+                        <span class="meta-tag">Traditional</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Key Lime Pie">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Key Lime Pie</h3>
+                        <span class="item-price">$24</span>
+                    </div>
+                    <p class="item-description">Tangy key lime filling in graham cracker crust with meringue</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">American</span>
+                        <span class="meta-tag">Citrus</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Opera Cake">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Opera Cake</h3>
+                        <span class="item-price">$34</span>
+                    </div>
+                    <p class="item-description">Layers of almond sponge cake with coffee and chocolate ganache</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">French</span>
+                        <span class="meta-tag">Premium</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Cannoli">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Cannoli</h3>
+                        <span class="item-price">$18</span>
+                    </div>
+                    <p class="item-description">Crispy pastry shells filled with sweet ricotta and chocolate chips</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Italian</span>
+                        <span class="meta-tag">Traditional</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Bread Pudding">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Bread Pudding</h3>
+                        <span class="item-price">$22</span>
+                    </div>
+                    <p class="item-description">Warm bread pudding with bourbon caramel sauce</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">American</span>
+                        <span class="meta-tag">Comfort</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="French Macarons">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">French Macarons</h3>
+                        <span class="item-price">$26</span>
+                    </div>
+                    <p class="item-description">Assorted flavors of delicate almond meringue cookies</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">French</span>
+                        <span class="meta-tag">Elegant</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Apple Pie">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Apple Pie</h3>
+                        <span class="item-price">$24</span>
+                    </div>
+                    <p class="item-description">Classic apple pie with cinnamon and vanilla ice cream</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">American</span>
+                        <span class="meta-tag">Classic</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-image">
+                    <img src="/placeholder.svg?height=250&width=400" alt="Artisan Gelato">
+                </div>
+                <div class="item-info">
+                    <div class="item-header">
+                        <h3 class="item-title">Artisan Gelato</h3>
+                        <span class="item-price">$16</span>
+                    </div>
+                    <p class="item-description">Three scoops of house-made Italian gelato in assorted flavors</p>
+                    <div class="item-meta">
+                        <span class="meta-tag">Italian</span>
+                        <span class="meta-tag">Frozen</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="qty-btn">-</button>
+                            <input type="number" class="qty-input" value="1" min="1">
+                            <button class="qty-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Quantity selector functionality
+        document.querySelectorAll('.qty-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('.qty-input');
+                const currentValue = parseInt(input.value);
+                
+                if (this.textContent === '+') {
+                    input.value = currentValue + 1;
+                } else if (this.textContent === '-' && currentValue > 1) {
+                    input.value = currentValue - 1;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
