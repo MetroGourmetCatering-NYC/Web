@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Now - Metro Gourmet Catering & Events NYC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: #000000;
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #D4AF37;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #D4AF37;
+        }
+
+        /* Main Content */
+        .page-header {
+            margin-top: 100px;
+            padding: 4rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: white;
+        }
+
+        .page-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #D4AF37;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Packages Section */
+        .packages-section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .package-card {
+            background: white;
+            border: 2px solid #D4AF37;
+            padding: 3rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .package-card.featured {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: white;
+            border: 3px solid #D4AF37;
+        }
+
+        .package-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #D4AF37;
+            margin-bottom: 1rem;
+        }
+
+        .package-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #D4AF37;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-per {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .featured .package-per {
+            color: #e0e0e0;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .package-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            font-size: 1rem;
+        }
+
+        .package-features li:before {
+            content: "✓ ";
+            color: #D4AF37;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Order Form */
+        .order-form-section {
+            background: #f8f8f8;
+            padding: 5rem 5%;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border: 2px solid #D4AF37;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #D4AF37;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .submit-btn {
+            background: #D4AF37;
+            color: #000000;
+            padding: 1.2rem 3rem;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: #000000;
+            color: #D4AF37;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #D4AF37;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+     Navigation 
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Metro Gourmet</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="order.html">Order Now</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="who-we-serve.html">Who We Serve</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+            </ul>
+        </div>
+    </nav>
+
+     Page Header 
+    <div class="page-header">
+        <h1>Order Your Event</h1>
+        <p>Choose from our curated packages or customize your perfect catering experience</p>
+    </div>
+
+     Packages Section 
+    <section class="packages-section">
+        <h2 class="section-title">Catering Packages</h2>
+        <div class="packages-grid">
+            <div class="package-card">
+                <h3 class="package-name">Essential</h3>
+                <div class="package-price">$65</div>
+                <p class="package-per">per person</p>
+                <ul class="package-features">
+                    <li>Choice of 3 Appetizers</li>
+                    <li>Choice of 2 Main Courses</li>
+                    <li>2 Side Dishes</li>
+                    <li>Bread & Butter Service</li>
+                    <li>Basic Setup & Cleanup</li>
+                    <li>Disposable Serving Ware</li>
+                </ul>
+            </div>
+
+            <div class="package-card featured">
+                <h3 class="package-name">Premium</h3>
+                <div class="package-price">$95</div>
+                <p class="package-per">per person</p>
+                <ul class="package-features">
+                    <li>Choice of 5 Appetizers</li>
+                    <li>Choice of 3 Main Courses</li>
+                    <li>3 Side Dishes</li>
+                    <li>Salad Station</li>
+                    <li>Choice of 2 Desserts</li>
+                    <li>Professional Staff Service</li>
+                    <li>China & Glassware</li>
+                    <li>Full Setup & Cleanup</li>
+                </ul>
+            </div>
+
+            <div class="package-card">
+                <h3 class="package-name">Luxury</h3>
+                <div class="package-price">$145</div>
+                <p class="package-per">per person</p>
+                <ul class="package-features">
+                    <li>Unlimited Appetizer Selection</li>
+                    <li>Choice of 4 Premium Main Courses</li>
+                    <li>4 Gourmet Side Dishes</li>
+                    <li>Premium Salad & Cheese Station</li>
+                    <li>Choice of 3 Signature Desserts</li>
+                    <li>Dedicated Event Coordinator</li>
+                    <li>Premium China & Crystal</li>
+                    <li>Full-Service Staff</li>
+                    <li>Custom Menu Options</li>
+                </ul>
+            </div>
+        </div>
+
+         Order Form 
+        <div class="order-form-section">
+            <div class="form-container">
+                <h2 class="section-title">Place Your Order</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="package">Select Package *</label>
+                        <select id="package" required>
+                            <option value="">Choose a package...</option>
+                            <option value="essential">Essential - $65/person</option>
+                            <option value="premium">Premium - $95/person</option>
+                            <option value="luxury">Luxury - $145/person</option>
+                            <option value="custom">Custom Package</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventDate">Event Date *</label>
+                            <input type="date" id="eventDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guestCount">Number of Guests *</label>
+                            <input type="number" id="guestCount" min="10" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventType">Event Type *</label>
+                        <select id="eventType" required>
+                            <option value="">Select event type...</option>
+                            <option value="wedding">Wedding</option>
+                            <option value="corporate">Corporate Event</option>
+                            <option value="birthday">Birthday Party</option>
+                            <option value="anniversary">Anniversary</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="venue">Event Venue/Address *</label>
+                        <input type="text" id="venue" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="specialRequests">Special Requests or Dietary Restrictions</label>
+                        <textarea id="specialRequests" placeholder="Please let us know about any allergies, dietary restrictions, or special requests..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">SUBMIT ORDER REQUEST</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+     Footer 
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="order.html">Order Now</a>
+                <a href="about.html">About Us</a>
+                <a href="who-we-serve.html">Who We Serve</a>
+                <a href="testimonials.html">Testimonials</a>
+            </div>
+            <p>&copy; 2025 Metro Gourmet Catering & Events NYC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
