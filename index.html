@@ -420,14 +420,6 @@
                 font-size: 1.5rem;
             }
             
-            .logo-placeholder {
-                font-size: 2.5rem;
-            }
-            
-            .logo-subtitle {
-                font-size: 1.2rem;
-            }
-            
             .section-title {
                 font-size: 2.5rem;
             }
@@ -460,7 +452,7 @@
             }
             
             .favorites-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
                 gap: 1rem;
             }
             
@@ -476,10 +468,6 @@
                 font-size: 1.2rem;
             }
             
-            .item-description {
-                font-size: 0.9rem;
-            }
-            
             .cta-buttons {
                 flex-direction: column;
                 gap: 1rem;
@@ -489,39 +477,44 @@
                 padding: 0.9rem 2rem;
                 font-size: 0.9rem;
             }
-            
+
+            /* ✅ FIXES ADDED BELOW */
+
+            /* Testimonials Mobile Fix */
             .testimonials-grid {
                 grid-template-columns: 1fr;
+                max-width: 95%;
+                margin: 0 auto;
             }
-            
+
             .testimonial-card {
-                padding: 2rem;
+                padding: 1.5rem;
+                font-size: 0.95rem;
             }
-            
-            .logo-placeholder {
-                font-size: 1.8rem;
+
+            .testimonial-text {
+                font-size: 0.9rem;
+                line-height: 1.6;
             }
-            
-            .logo-subtitle {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .section-subtitle {
-                font-size: 1rem;
-            }
-            
-            .favorites-section,
-            .testimonials-section {
-                padding: 3rem 3%;
-            }
-            
+
+            /* Quick Links Mobile Fix */
             .quick-links-container {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                max-width: 90%;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .quick-links-column h3 {
+                font-size: 1.3rem;
+            }
+
+            .quick-links-column ul li {
+                margin-bottom: 0.5rem;
+            }
+
+            .quick-links-column ul li a {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -542,12 +535,11 @@
         </div>
     </nav>
 
-   <!-- Hero Section - Black Background with Logo -->
+    <!-- Hero Section -->
     <section class="hero-section">
         <div class="logo-container">
             <div class="logo-box">
                 <div class="logo-placeholder">
-                    <!-- Replace the src below with your actual logo image -->
                     <img src="LOGO GOURMET.png" alt="Metro Gourmet Catering Logo">
                 </div>
             </div>
@@ -555,11 +547,10 @@
         </div>
     </section>
     
-            <div class="cta-buttons">
-            <a href="order.html" class="cta-btn cta-btn-primary">Order Now</a>
-            <a href="menu.html" class="cta-btn cta-btn-secondary">View Full Menu</a>
-        </div>
-    </section>
+    <div class="cta-buttons">
+        <a href="order.html" class="cta-btn cta-btn-primary">Order Now</a>
+        <a href="menu.html" class="cta-btn cta-btn-secondary">View Full Menu</a>
+    </div>
 
     <!-- Favorites Section -->
     <section class="favorites-section">
@@ -599,38 +590,8 @@
                     <p class="item-description">Creamy arborio rice infused with black truffle and aged parmesan, finished with truffle oil</p>
                 </div>
             </div>
-
-            <div class="favorite-item">
-                <div class="item-image">
-                    <img src="/placeholder.svg?height=280&width=400" alt="Grilled Salmon">
-                </div>
-                <div class="item-content">
-                    <h3 class="item-name">Atlantic Salmon</h3>
-                    <p class="item-description">Perfectly grilled salmon with dill cream sauce, roasted asparagus, and lemon beurre blanc</p>
-                </div>
-            </div>
-
-            <div class="favorite-item">
-                <div class="item-image">
-                    <img src="/placeholder.svg?height=280&width=400" alt="Chocolate Lava Cake">
-                </div>
-                <div class="item-content">
-                    <h3 class="item-name">Chocolate Lava Cake</h3>
-                    <p class="item-description">Decadent warm chocolate cake with molten center, served with vanilla bean ice cream</p>
-                </div>
-            </div>
-
-            <div class="favorite-item">
-                <div class="item-image">
-                    <img src="/placeholder.svg?height=280&width=400" alt="Filet Mignon">
-                </div>
-                <div class="item-content">
-                    <h3 class="item-name">Filet Mignon</h3>
-                    <p class="item-description">8oz center-cut filet with red wine reduction, truffle mashed potatoes, and roasted vegetables</p>
-                </div>
-            </div>
         </div>
-
+    </section>
 
     <!-- Testimonials Section -->
     <section class="testimonials-section">
@@ -652,69 +613,54 @@
                 <div class="testimonial-rating">★★★★★</div>
                 <p class="testimonial-text">"We've used Metro Gourmet for multiple corporate events. Their ability to accommodate dietary restrictions while maintaining exceptional quality is impressive. Highly recommended!"</p>
                 <div class="testimonial-author">David Rodriguez</div>
-                <div class="testimonial-role">VP of Operations, Tech Startup</div>
+                <div class="testimonial-role">Corporate Event, Midtown NYC</div>
             </div>
 
             <div class="testimonial-card">
                 <div class="testimonial-rating">★★★★★</div>
-                <p class="testimonial-text">"The attention to detail and quality of ingredients is unmatched. Metro Gourmet transformed our anniversary party into a culinary experience our guests will never forget."</p>
-                <div class="testimonial-author">Jennifer Williams</div>
-                <div class="testimonial-role">50th Anniversary Celebration</div>
+                <p class="testimonial-text">"From menu design to delivery, the Metro Gourmet team delivered a flawless experience. Their attention to detail and luxury touch is unmatched in New York catering."</p>
+                <div class="testimonial-author">Amanda Greene</div>
+                <div class="testimonial-role">Private Event, Brooklyn</div>
             </div>
         </div>
     </section>
 
-    <!-- Quick Links Section -->
+    <!-- Quick Links Footer -->
     <section class="quick-links-section">
         <div class="quick-links-container">
             <div class="quick-links-column">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
                     <li><a href="menu.html">Menu</a></li>
                     <li><a href="order.html">Order Now</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="who-we-serve.html">Who We Serve</a></li>
                     <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
 
             <div class="quick-links-column">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="who-we-serve.html">Weddings</a></li>
-                    <li><a href="who-we-serve.html">Corporate Events</a></li>
-                    <li><a href="who-we-serve.html">Private Parties</a></li>
-                    <li><a href="who-we-serve.html">Social Events</a></li>
-                    <li><a href="who-we-serve.html">Film & Production</a></li>
-                </ul>
+                <h3>Contact</h3>
+                <div class="contact-info">
+                    <p>📍 New York City, NY</p>
+                    <p>📞 (212) 555-0199</p>
+                    <p>✉️ info@metrogourmetnyc.com</p>
+                </div>
             </div>
 
-            <div class="quick-links-column contact-info">
-                <h3>Contact Us</h3>
-                <p>📍 New York City, NY</p>
-                <p>📞 (212) 555-FOOD</p>
-                <p>✉️ info@metrogourmetnyc.com</p>
-                <p>🕐 Mon-Sun: 8AM - 10PM</p>
+            <div class="quick-links-column">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Metro Gourmet Catering & Events NYC. All rights reserved.</p>
+        <p>© 2025 Metro Gourmet Catering & Events NYC. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    </script>
 </body>
 </html>
