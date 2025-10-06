@@ -11,7 +11,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Montserrat', sans-serif;
             background: #ffffff;
@@ -227,24 +227,115 @@
             color: #ffffff;
         }
 
-        @media (max-width: 768px) {
+        /* Enhanced mobile responsiveness */
+        @media (max-width: 1200px) {
             .nav-links {
-                gap: 1.5rem;
-                font-size: 0.85rem;
+                gap: 2rem;
+                font-size: 0.9rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 968px) {
+            nav {
+                padding: 1rem 3%;
+            }
+            
+            .nav-links {
+                gap: 1.2rem;
+                font-size: 0.8rem;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .page-header {
+                padding: 3rem 3%;
+            }
+            
+            .page-header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .services-section {
+                padding: 4rem 3%;
+            }
+            
+            .service-card {
+                padding: 2rem;
+            }
+            
+            .service-icon {
+                font-size: 3rem;
+            }
+            
+            .service-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.8rem 3%;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+                font-size: 0.7rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
             }
 
             .page-header h1 {
                 font-size: 2.5rem;
             }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
 
             .services-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .cta-section {
+                padding: 4rem 3%;
+            }
+            
+            .cta-title {
+                font-size: 2.5rem;
+            }
+            
+            .cta-text {
+                font-size: 1.1rem;
+            }
+            
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .footer-links {
+                gap: 1rem;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-     Navigation 
+    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">Metro Gourmet</a>
@@ -259,13 +350,13 @@
         </div>
     </nav>
 
-     Page Header 
+    <!-- Page Header -->
     <div class="page-header">
         <h1>Who We Serve</h1>
         <p>Exceptional catering for every occasion and celebration</p>
     </div>
 
-     Services Section 
+    <!-- Services Section -->
     <section class="services-section">
         <div class="services-grid">
             <div class="service-card">
@@ -354,14 +445,14 @@
         </div>
     </section>
 
-     CTA Section 
+    <!-- CTA Section -->
     <section class="cta-section">
         <h2 class="cta-title">Ready to Plan Your Event?</h2>
         <p class="cta-text">Let's create an unforgettable culinary experience together. Contact us today to discuss your vision and receive a customized proposal.</p>
         <a href="order.html" class="cta-button">GET STARTED</a>
     </section>
 
-     Footer 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-links">
@@ -377,3 +468,4 @@
     </footer>
 </body>
 </html>
+
