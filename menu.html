@@ -1871,24 +1871,17 @@ clearFiltersBtn.addEventListener('click', function() {
 });
 
 // Quantity selector with auto total calculation
-document.querySelectorAll('.menu-item').forEach(item => {
+menuItems.forEach(item => {
     const qtyInput = item.querySelector('.qty-input');
     const minusBtn = item.querySelector('.qty-btn:first-of-type');
     const plusBtn = item.querySelector('.qty-btn:last-of-type');
 
-    // Get price from item-price text (assumes format "$3.50 per Guest" or "$42")
-    const priceText = item.querySelector('.item-price').textContent.trim();
+    // Get price from item-price-number
+    const priceText = item.querySelector('.item-price-number').textContent.trim();
     const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
 
-    // Create total price element if it doesn't exist
-    let totalElem = item.querySelector('.total-price');
-    if (!totalElem) {
-        totalElem = document.createElement('div');
-        totalElem.classList.add('total-price');
-        totalElem.style.fontWeight = 'bold';
-        totalElem.style.marginTop = '5px';
-        item.querySelector('.item-info').appendChild(totalElem);
-    }
+    // Use existing total element
+    const totalElem = item.querySelector('.item-total');
 
     function updateTotal() {
         const qty = parseInt(qtyInput.value) || parseInt(qtyInput.min) || 1;
