@@ -1778,124 +1778,152 @@
     </section>
 
     <script>
-        const searchInput = document.getElementById('searchInput');
-        const clearFiltersBtn = document.getElementById('clearFilters');
-        const resultsCount = document.getElementById('resultsCount');
-        const menuItems = document.querySelectorAll('.menu-item');
+    const searchInput = document.getElementById('searchInput');
+    const clearFiltersBtn = document.getElementById('clearFilters');
+    const resultsCount = document.getElementById('resultsCount');
+    const menuItems = document.querySelectorAll('.menu-item');
 
-        // Get all filter checkboxes
-        const cuisineCheckboxes = document.querySelectorAll('#cuisineFilters input[type="checkbox"]');
-        const mealCheckboxes = document.querySelectorAll('#mealFilters input[type="checkbox"]');
-        const categoryCheckboxes = document.querySelectorAll('#categoryFilters input[type="checkbox"]');
+    // Get all filter checkboxes
+    const cuisineCheckboxes = document.querySelectorAll('#cuisineFilters input[type="checkbox"]');
+    const mealCheckboxes = document.querySelectorAll('#mealFilters input[type="checkbox"]');
+    const categoryCheckboxes = document.querySelectorAll('#categoryFilters input[type="checkbox"]');
 
-        // Filter function
-        function filterMenu() {
-            const searchTerm = searchInput.value.toLowerCase();
-            
-            // Get selected filters
-            const selectedCuisines = Array.from(cuisineCheckboxes)
-                .filter(cb => cb.checked)
-                .map(cb => cb.value);
-            
-            const selectedMeals = Array.from(mealCheckboxes)
-                .filter(cb => cb.checked)
-                .map(cb => cb.value);
-            
-            const selectedCategories = Array.from(categoryCheckboxes)
-                .filter(cb => cb.checked)
-                .map(cb => cb.value);
+    // Filter function
+    function filterMenu() {
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        const selectedCuisines = Array.from(cuisineCheckboxes)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value);
+        
+        const selectedMeals = Array.from(mealCheckboxes)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value);
+        
+        const selectedCategories = Array.from(categoryCheckboxes)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value);
 
-            let visibleCount = 0;
+        let visibleCount = 0;
 
-            menuItems.forEach(item => {
-                const title = item.querySelector('.item-title').textContent.toLowerCase();
-                const description = item.querySelector('.item-description').textContent.toLowerCase();
-                const cuisine = item.dataset.cuisine;
-                const meal = item.dataset.meal;
-                const categories = item.dataset.category.split(',').filter(c => c);
+        menuItems.forEach(item => {
+            const title = item.querySelector('.item-title').textContent.toLowerCase();
+            const description = item.querySelector('.item-description').textContent.toLowerCase();
+            const cuisine = item.dataset.cuisine;
+            const meal = item.dataset.meal;
+            const categories = item.dataset.category.split(',').filter(c => c);
 
-                // Check search term
-                const matchesSearch = !searchTerm || 
-                    title.includes(searchTerm) || 
-                    description.includes(searchTerm);
+            const matchesSearch = !searchTerm || 
+                title.includes(searchTerm) || 
+                description.includes(searchTerm);
 
-                // Check cuisine filter
-                const matchesCuisine = selectedCuisines.length === 0 || 
-                    selectedCuisines.includes(cuisine);
+            const matchesCuisine = selectedCuisines.length === 0 || 
+                selectedCuisines.includes(cuisine);
 
-                // Check meal filter
-                const matchesMeal = selectedMeals.length === 0 || 
-                    selectedMeals.includes(meal);
+            const matchesMeal = selectedMeals.length === 0 || 
+                selectedMeals.includes(meal);
 
-                // Check category filter
-                const matchesCategory = selectedCategories.length === 0 || 
-                    selectedCategories.some(cat => categories.includes(cat));
+            const matchesCategory = selectedCategories.length === 0 || 
+                selectedCategories.some(cat => categories.includes(cat));
 
-                // Show/hide item based on all filters
-                if (matchesSearch && matchesCuisine && matchesMeal && matchesCategory) {
-                    item.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
-
-            // Update results count
-            resultsCount.textContent = `Showing ${visibleCount} of ${menuItems.length} items`;
-        }
-
-        // Add event listeners
-        searchInput.addEventListener('input', filterMenu);
-
-        cuisineCheckboxes.forEach(cb => {
-            cb.addEventListener('change', function() {
-                this.parentElement.classList.toggle('active', this.checked);
-                filterMenu();
-            });
+            if (matchesSearch && matchesCuisine && matchesMeal && matchesCategory) {
+                item.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                item.classList.add('hidden');
+            }
         });
 
-        mealCheckboxes.forEach(cb => {
-            cb.addEventListener('change', function() {
-                this.parentElement.classList.toggle('active', this.checked);
-                filterMenu();
-            });
-        });
+        resultsCount.textContent = `Showing ${visibleCount} of ${menuItems.length} items`;
+    }
 
-        categoryCheckboxes.forEach(cb => {
-            cb.addEventListener('change', function() {
-                this.parentElement.classList.toggle('active', this.checked);
-                filterMenu();
-            });
-        });
+    // Add event listeners for filters
+    searchInput.addEventListener('input', filterMenu);
 
-        // Clear all filters
-        clearFiltersBtn.addEventListener('click', function() {
-            searchInput.value = '';
-            
-            [...cuisineCheckboxes, ...mealCheckboxes, ...categoryCheckboxes].forEach(cb => {
-                cb.checked = false;
-                cb.parentElement.classList.remove('active');
-            });
-            
+    cuisineCheckboxes.forEach(cb => {
+        cb.addEventListener('change', function() {
+            this.parentElement.classList.toggle('active', this.checked);
             filterMenu();
         });
+    });
 
-        // Quantity selector functionality
-        document.querySelectorAll('.qty-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const input = this.parentElement.querySelector('.qty-input');
-                const currentValue = parseInt(input.value);
-                
-                if (this.textContent === '+') {
-                    input.value = currentValue + 1;
-                } else if (this.textContent === '-' && currentValue > 1) {
-                    input.value = currentValue - 1;
-                }
-            });
+    mealCheckboxes.forEach(cb => {
+        cb.addEventListener('change', function() {
+            this.parentElement.classList.toggle('active', this.checked);
+            filterMenu();
+        });
+    });
+
+    categoryCheckboxes.forEach(cb => {
+        cb.addEventListener('change', function() {
+            this.parentElement.classList.toggle('active', this.checked);
+            filterMenu();
+        });
+    });
+
+    clearFiltersBtn.addEventListener('click', function() {
+        searchInput.value = '';
+        [...cuisineCheckboxes, ...mealCheckboxes, ...categoryCheckboxes].forEach(cb => {
+            cb.checked = false;
+            cb.parentElement.classList.remove('active');
+        });
+        filterMenu();
+    });
+
+    // Quantity selector with auto total calculation
+    document.querySelectorAll('.menu-item').forEach(item => {
+        const qtyInput = item.querySelector('.qty-input');
+        const minusBtn = item.querySelector('.qty-btn:first-of-type');
+        const plusBtn = item.querySelector('.qty-btn:last-of-type');
+
+        // Get price from item-price text (assumes format "$3.50 per Guest" or "$42")
+        const priceText = item.querySelector('.item-price').textContent.trim();
+        const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
+
+        // Create total price element if it doesn't exist
+        let totalElem = item.querySelector('.total-price');
+        if (!totalElem) {
+            totalElem = document.createElement('div');
+            totalElem.classList.add('total-price');
+            totalElem.style.fontWeight = 'bold';
+            totalElem.style.marginTop = '5px';
+            item.querySelector('.item-info').appendChild(totalElem);
+        }
+
+        function updateTotal() {
+            const qty = parseInt(qtyInput.value);
+            const total = (qty * price).toFixed(2);
+            totalElem.textContent = `Total: $${total}`;
+        }
+
+        minusBtn.addEventListener('click', () => {
+            const min = parseInt(qtyInput.min) || 1;
+            let current = parseInt(qtyInput.value);
+            if (current > min) {
+                qtyInput.value = current - 1;
+                updateTotal();
+            }
         });
 
-        // Initialize results count
-        filterMenu();
-    </script>
-</body>
-</html>
+        plusBtn.addEventListener('click', () => {
+            qtyInput.value = parseInt(qtyInput.value) + 1;
+            updateTotal();
+        });
+
+        // Update total if user types manually
+        qtyInput.addEventListener('input', () => {
+            const min = parseInt(qtyInput.min) || 1;
+            if (qtyInput.value === '' || parseInt(qtyInput.value) < min) {
+                qtyInput.value = min;
+            }
+            updateTotal();
+        });
+
+        // Initialize total
+        updateTotal();
+    });
+
+    // Initialize results count
+    filterMenu();
+</script>
+
