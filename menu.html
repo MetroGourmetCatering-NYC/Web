@@ -717,27 +717,33 @@
     </div>
 
       
-   <div class="menu-item" data-cuisine="American" data-meal="Breakfast" data-category="Savory Miniatures">
+  <div class="menu-item" data-cuisine="American" data-meal="Breakfast" data-category="Sandwiches">
   <div class="item-image">
-    <img src="/placeholder.svg?height=250&width=400" alt="Savory Miniature Sandwiches and Pinwheels" style="width:100%; height:250px; object-fit:cover; border-radius:10px;">
+    <img src="/placeholder.svg?height=250&width=400" alt="Savory Miniature Sandwiches & Pinwheels">
   </div>
   <div class="item-info">
-    <div class="item-header">
-      <h3 class="item-title">Savory Miniature Sandwiches & Pinwheels</h3>
-      <div class="item-price">
-        <span class="item-price-number" style="color:#d4af37; font-size:1.1rem;">$8.95</span>
-        <span class="item-price-text" style="font-size:0.8rem; color:#666;">per Guest</span>
+    <div class="item-header" style="display: flex; justify-content: space-between; align-items: flex-start;">
+      <h3 class="item-title" style="flex: 1; margin-right: 10px; line-height: 1.2;">Savory Miniature Sandwiches & Pinwheels</h3>
+      <div class="item-price" style="text-align: right;">
+        <span class="item-price-number" style="color: #d4af37; font-size: 1.1rem; font-weight: bold; display: block;">$8.95</span>
+        <span class="item-price-text" style="font-size: 0.8rem; color: #666; display: block;">per Guest</span>
       </div>
     </div>
-    <p class="item-description">Two per guest (minimum 6). Choose from:</p>
-    <ul class="item-list" style="margin-left:20px; color:#444;">
-      <li>Applewood smoked bacon and oven-roasted tomatoes</li>
-      <li>Feta cheese, tomato, and olive spread</li>
-    </ul>
-    <div class="item-meta">
-      <span class="meta-tag">American</span>
-      <span class="meta-tag">Breakfast</span>
-    </div>
+
+    <p class="item-description" style="margin-top: 0.5rem;">
+      Two per guest (minimum 6). An assortment of miniature sandwiches and pinwheels featuring:
+    </p>
+
+    <details class="item-options" style="margin: 0.5rem 0;">
+      <summary style="cursor: pointer; color: #b8860b; font-weight: 600;">Options</summary>
+      <ul style="list-style: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
+        <li>Applewood smoked bacon and oven-roasted tomatoes</li>
+        <li>Feta cheese, tomato, and olive spread</li>
+        <li>Turkey, Swiss cheese, and honey mustard</li>
+        <li>Ham, cheddar, and dijon aioli</li>
+      </ul>
+    </details>
+
     <div class="quantity-selector">
       <span class="quantity-label">Quantity (min 6):</span>
       <div class="quantity-controls">
@@ -746,10 +752,10 @@
         <button class="qty-btn">+</button>
       </div>
     </div>
+
     <p class="item-total">Total: $53.70</p>
   </div>
 </div>
-
     </section>
     
     <!-- Appetizers -->
