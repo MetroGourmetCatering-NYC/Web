@@ -2128,4 +2128,56 @@ menuItems.forEach(item => {
 
 // Initialize results count
 filterMenu();
+
+
+// 🔥 Load More Feature (ADDED — nothing removed)
+document.addEventListener("DOMContentLoaded", function() {
+  const breakfastItems = document.querySelectorAll("#breakfast-menu .menu-item");
+  const loadMoreBtn = document.getElementById("loadMoreBtn");
+  const closeMoreBtn = document.getElementById("closeMoreBtn");
+
+  if (!breakfastItems.length || !loadMoreBtn || !closeMoreBtn) return;
+
+  let visibleCount = 5; // show first 5 items
+
+  // Hide all items beyond the first 5
+  breakfastItems.forEach((item, index) => {
+    if (index >= visibleCount) {
+      item.style.display = "none";
+    }
+  });
+
+  // Load more items
+  loadMoreBtn.addEventListener("click", function() {
+    let nextCount = visibleCount + 6; // load 6 more rows each time
+
+    breakfastItems.forEach((item, index) => {
+      if (index < nextCount) {
+        item.style.display = "block";
+      }
+    });
+
+    visibleCount = nextCount;
+
+    // Hide the button if everything is shown
+    if (visibleCount >= breakfastItems.length) {
+      loadMoreBtn.style.display = "none";
+    }
+
+    closeMoreBtn.style.display = "inline-block";
+  });
+
+  // Close extra items
+  closeMoreBtn.addEventListener("click", function() {
+    breakfastItems.forEach((item, index) => {
+      if (index >= 5) {
+        item.style.display = "none";
+      }
+    });
+
+    visibleCount = 5;
+    loadMoreBtn.style.display = "inline-block";
+    closeMoreBtn.style.display = "none";
+  });
+});
 </script>
