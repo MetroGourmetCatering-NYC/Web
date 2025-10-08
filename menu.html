@@ -481,6 +481,29 @@
                 padding: 1.5rem 1rem;
             }
         }
+
+        /* ✅ FIX FOR PRICE CUT-OFF ISSUE */
+        .item-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          width: 100%;
+        }
+
+        .item-title {
+          flex: 1 1 60%;
+          margin: 0;
+          min-width: 200px;
+        }
+
+        .item-price {
+          text-align: right;
+          flex-shrink: 0;
+          white-space: nowrap;
+        }
+    
     </style>
 </head>
 <body>
