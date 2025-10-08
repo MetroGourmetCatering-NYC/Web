@@ -1958,18 +1958,22 @@ const cuisineCheckboxes = document.querySelectorAll('#cuisineFilters input[type=
 const mealCheckboxes = document.querySelectorAll('#mealFilters input[type="checkbox"]');
 const categoryCheckboxes = document.querySelectorAll('#categoryFilters input[type="checkbox"]');
 
-// Filter function
+// Breakfast Type buttons
+const breakfastTypeButtons = document.querySelectorAll('.breakfast-type-btn');
+let selectedBreakfastType = ""; // empty means 'All'
+
+// Filter function (combined)
 function filterMenu() {
     const searchTerm = searchInput.value.toLowerCase();
-    
+
     const selectedCuisines = Array.from(cuisineCheckboxes)
         .filter(cb => cb.checked)
         .map(cb => cb.value);
-    
+
     const selectedMeals = Array.from(mealCheckboxes)
         .filter(cb => cb.checked)
         .map(cb => cb.value);
-    
+
     const selectedCategories = Array.from(categoryCheckboxes)
         .filter(cb => cb.checked)
         .map(cb => cb.value);
@@ -1982,21 +1986,15 @@ function filterMenu() {
         const cuisine = item.dataset.cuisine;
         const meal = item.dataset.meal;
         const categories = item.dataset.category.split(',').filter(c => c);
+        const breakfastType = item.dataset.breakfastType || "";
 
-        const matchesSearch = !searchTerm || 
-            title.includes(searchTerm) || 
-            description.includes(searchTerm);
+        const matchesSearch = !searchTerm || title.includes(searchTerm) || description.includes(searchTerm);
+        const matchesCuisine = selectedCuisines.length === 0 || selectedCuisines.includes(cuisine);
+        const matchesMeal = selectedMeals.length === 0 || selectedMeals.includes(meal);
+        const matchesCategory = selectedCategories.length === 0 || selectedCategories.some(cat => categories.includes(cat));
+        const matchesBreakfastType = !selectedBreakfastType || breakfastType === selectedBreakfastType;
 
-        const matchesCuisine = selectedCuisines.length === 0 || 
-            selectedCuisines.includes(cuisine);
-
-        const matchesMeal = selectedMeals.length === 0 || 
-            selectedMeals.includes(meal);
-
-        const matchesCategory = selectedCategories.length === 0 || 
-            selectedCategories.some(cat => categories.includes(cat));
-
-        if (matchesSearch && matchesCuisine && matchesMeal && matchesCategory) {
+        if (matchesSearch && matchesCuisine && matchesMeal && matchesCategory && matchesBreakfastType) {
             item.classList.remove('hidden');
             visibleCount++;
         } else {
@@ -2007,9 +2005,10 @@ function filterMenu() {
     resultsCount.textContent = `Showing ${visibleCount} of ${menuItems.length} items`;
 }
 
-// Add event listeners for filters
+// Event listeners for search input
 searchInput.addEventListener('input', filterMenu);
 
+// Event listeners for filter checkboxes
 cuisineCheckboxes.forEach(cb => {
     cb.addEventListener('change', function() {
         this.parentElement.classList.toggle('active', this.checked);
@@ -2031,26 +2030,36 @@ categoryCheckboxes.forEach(cb => {
     });
 });
 
+// Clear all filters button
 clearFiltersBtn.addEventListener('click', function() {
     searchInput.value = '';
     [...cuisineCheckboxes, ...mealCheckboxes, ...categoryCheckboxes].forEach(cb => {
         cb.checked = false;
         cb.parentElement.classList.remove('active');
     });
+    selectedBreakfastType = "";
+    breakfastTypeButtons.forEach(b => b.classList.remove('active'));
     filterMenu();
 });
 
-// Quantity selector with auto total calculation
+// Breakfast Type button clicks
+breakfastTypeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        breakfastTypeButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedBreakfastType = btn.dataset.type;
+        filterMenu();
+    });
+});
+
+// Quantity selector & total calculation
 menuItems.forEach(item => {
     const qtyInput = item.querySelector('.qty-input');
     const minusBtn = item.querySelector('.qty-btn:first-of-type');
     const plusBtn = item.querySelector('.qty-btn:last-of-type');
 
-    // Get price from item-price-number
     const priceText = item.querySelector('.item-price').textContent.trim();
     const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
-
-    // Use existing total element
     const totalElem = item.querySelector('.item-total');
 
     function updateTotal() {
@@ -2087,5 +2096,6 @@ menuItems.forEach(item => {
 // Initialize results count
 filterMenu();
 </script>
+
 
 
