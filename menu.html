@@ -484,140 +484,129 @@
     </style>
 </head>
 <body>
-    
-  <!-- Navigation -->
-<nav>
-    <div class="nav-container">
-        <div class="logo-text">MGC</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="order.html">Order Now</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="who-we-serve.html">Who We Serve</a></li>
-            <li><a href="testimonials.html">Testimonials</a></li>
-        </ul>
-    </div>
-</nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-text">MGC</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="order.html">Order Now</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="who-we-serve.html">Who We Serve</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<!-- Page Header -->
-<div class="page-header">
-    <h1 class="page-title">Our Menu</h1>
-    <div class="gold-line"></div>
-    <p class="page-subtitle">Exquisite cuisine crafted for your special occasions</p>
-</div>
-
-<!-- Added Breakfast Type Buttons -->
-<div id="breakfastTypeButtons" class="filter-buttons">
-    <button class="breakfast-type-btn" data-type="">All</button>
-    <button class="breakfast-type-btn" data-type="Platters">Platters</button>
-    <button class="breakfast-type-btn" data-type="Hot Breakfast">Hot Breakfast</button>
-    <button class="breakfast-type-btn" data-type="Beverages">Beverages</button>
-    <button class="breakfast-type-btn" data-type="Light & Healthy">Light & Healthy</button>
-    <button class="breakfast-type-btn" data-type="Packages">Breakfast Packages</button>
-</div>
-
-<!-- Added search bar and filter section -->
-<div class="search-filter-section">
-    <div class="search-bar">
-        <input type="text" id="searchInput" class="search-input" placeholder="Search for dishes...">
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Our Menu</h1>
+        <div class="gold-line"></div>
+        <p class="page-subtitle">Exquisite cuisine crafted for your special occasions</p>
     </div>
 
-    <div class="filters-container">
-        <!-- Cuisine Filter -->
-        <div class="filter-group">
-            <h3 class="filter-title">Cuisine Type</h3>
-            <div class="filter-options" id="cuisineFilters">
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="mediterranean" value="Mediterranean">
-                    <label for="mediterranean">Mediterranean</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="italian" value="Italian">
-                    <label for="italian">Italian</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="american" value="American">
-                    <label for="american">American</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="french" value="French">
-                    <label for="french">French</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="asian" value="Asian">
-                    <label for="asian">Asian</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="spanish" value="Spanish">
-                    <label for="spanish">Spanish</label>
-                </div>
-            </div>
+    <!-- Added search bar and filter section -->
+    <div class="search-filter-section">
+        <div class="search-bar">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search for dishes...">
         </div>
 
-        <!-- Meal Type Filter -->
-        <div class="filter-group">
-            <h3 class="filter-title">Meal Type</h3>
-            <div class="filter-options" id="mealFilters">
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="Breakfast" value="Breakfast">
-                    <label for="Breakfast">Breakfast</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="appetizer" value="Appetizer">
-                    <label for="appetizer">Appetizer</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="main-course" value="Main Course">
-                    <label for="main-course">Main Course</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="dessert" value="Dessert">
-                    <label for="dessert">Dessert</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="sides" value="Sides">
-                    <label for="sides">Sides</label>
-                </div>
-            </div>
-        </div>
-
-        <!-- Food Category Filter -->
-        <div class="filter-group">
-            <h3 class="filter-title small">Food Categories</h3>
-            <div class="filter-options" id="categoryFilters">
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="vegetarian" value="Vegetarian">
-                    <label for="vegetarian">Vegetarian</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="seafood" value="Seafood">
-                    <label for="seafood">Seafood</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="lamb" value="Lamb">
-                    <label for="lamb">Lamb</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="pasta" value="Pasta">
-                    <label for="pasta">Pasta</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="sweets" value="Sweets">
-                    <label for="sweets">Sweets</label>
-                </div>
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="vegan" value="Vegan">
-                    <label for="vegan">Vegan</label>
+        <div class="filters-container">
+            <!-- Cuisine Filter -->
+            <div class="filter-group">
+                <h3 class="filter-title">Cuisine Type</h3>
+                <div class="filter-options" id="cuisineFilters">
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="mediterranean" value="Mediterranean">
+                        <label for="mediterranean">Mediterranean</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="italian" value="Italian">
+                        <label for="italian">Italian</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="american" value="American">
+                        <label for="american">American</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="french" value="French">
+                        <label for="french">French</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="asian" value="Asian">
+                        <label for="asian">Asian</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="spanish" value="Spanish">
+                        <label for="spanish">Spanish</label>
+                    </div>
                 </div>
             </div>
+
+            <!-- Meal Type Filter -->
+            <div class="filter-group">
+                <h3 class="filter-title">Meal Type</h3>
+                <div class="filter-options" id="mealFilters">
+                     <div class="filter-checkbox">
+                        <input type="checkbox" id="Breakfast" value="Breakfast">
+                        <label for="Breakfast">Breakfast</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="appetizer" value="Appetizer">
+                        <label for="appetizer">Appetizer</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="main-course" value="Main Course">
+                        <label for="main-course">Main Course</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="dessert" value="Dessert">
+                        <label for="dessert">Dessert</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="sides" value="Sides">
+                        <label for="sides">Sides</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Food Category Filter -->
+            <div class="filter-group">
+                <h3 class="filter-title small">Food Categories</h3>
+                <div class="filter-options" id="categoryFilters">
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="vegetarian" value="Vegetarian">
+                        <label for="vegetarian">Vegetarian</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="seafood" value="Seafood">
+                        <label for="seafood">Seafood</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="lamb" value="Lamb">
+                        <label for="lamb">Lamb</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="pasta" value="Pasta">
+                        <label for="pasta">Pasta</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="sweets" value="Sweets">
+                        <label for="sweets">Sweets</label>
+                    </div>
+                    <div class="filter-checkbox">
+                        <input type="checkbox" id="vegan" value="Vegan">
+                        <label for="vegan">Vegan</label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="clear-filters" id="clearFilters">Clear All Filters</button>
         </div>
 
-        <button class="clear-filters" id="clearFilters">Clear All Filters</button>
+        <div class="results-count" id="resultsCount"></div>
     </div>
-
-    <div class="results-count" id="resultsCount"></div>
-</div>
 
  <!-- Breakfast -->
 
