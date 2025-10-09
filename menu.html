@@ -2235,4 +2235,46 @@ menuItems.forEach(item => {
 
 // Initialize results count
 filterMenu();
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const items = document.querySelectorAll(".menu-item");
+  const loadMoreBtn = document.querySelector(".load-more-btn");
+  const closeBtn = document.querySelector(".close-btn");
+  let visibleCount = 5; // show first 5 items
+
+  // Hide all items except the first 5
+  items.forEach((item, index) => {
+    if (index >= visibleCount) {
+      item.classList.add("hidden");
+    }
+  });
+
+  // Load more button
+  loadMoreBtn.addEventListener("click", () => {
+    const hiddenItems = document.querySelectorAll(".menu-item.hidden");
+    hiddenItems.forEach((item, i) => {
+      if (i < 5) { // show 5 more each click
+        item.classList.remove("hidden");
+        item.classList.add("show");
+        setTimeout(() => item.classList.remove("show"), 500); // reset animation
+      }
+    });
+
+    if (document.querySelectorAll(".menu-item.hidden").length === 0) {
+      loadMoreBtn.style.display = "none";
+    }
+  });
+
+  // Close button (optional)
+  closeBtn.addEventListener("click", () => {
+    items.forEach((item, index) => {
+      if (index >= 5) {
+        item.classList.add("hidden");
+      }
+    });
+    loadMoreBtn.style.display = "inline-block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});
 </script>
