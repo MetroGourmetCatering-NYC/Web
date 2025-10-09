@@ -2101,49 +2101,43 @@ const searchInput = document.getElementById('searchInput');
 const clearFiltersBtn = document.getElementById('clearFilters');
 const resultsCount = document.getElementById('resultsCount');
 const menuItems = document.querySelectorAll('.menu-item');
+const sections = document.querySelectorAll('.menu-section');
 
 // Get all filter checkboxes
 const cuisineCheckboxes = document.querySelectorAll('#cuisineFilters input[type="checkbox"]');
 const mealCheckboxes = document.querySelectorAll('#mealFilters input[type="checkbox"]');
 const categoryCheckboxes = document.querySelectorAll('#categoryFilters input[type="checkbox"]');
 
-// Filter function
+// -------------------- FILTER FUNCTION --------------------
 function filterMenu() {
     const searchTerm = searchInput.value.toLowerCase();
-    
+
     const selectedCuisines = Array.from(cuisineCheckboxes)
         .filter(cb => cb.checked)
         .map(cb => cb.value);
-    
+
     const selectedMeals = Array.from(mealCheckboxes)
         .filter(cb => cb.checked)
         .map(cb => cb.value);
-    
+
     const selectedCategories = Array.from(categoryCheckboxes)
         .filter(cb => cb.checked)
         .map(cb => cb.value);
 
     let visibleCount = 0;
 
+    // Filter menu items
     menuItems.forEach(item => {
         const title = item.querySelector('.item-title').textContent.toLowerCase();
         const description = item.querySelector('.item-description').textContent.toLowerCase();
         const cuisine = item.dataset.cuisine;
         const meal = item.dataset.meal;
-        const categories = item.dataset.category.split(',').filter(c => c);
+        const categories = item.dataset.category ? item.dataset.category.split(',') : [];
 
-        const matchesSearch = !searchTerm || 
-            title.includes(searchTerm) || 
-            description.includes(searchTerm);
-
-        const matchesCuisine = selectedCuisines.length === 0 || 
-            selectedCuisines.includes(cuisine);
-
-        const matchesMeal = selectedMeals.length === 0 || 
-            selectedMeals.includes(meal);
-
-        const matchesCategory = selectedCategories.length === 0 || 
-            selectedCategories.some(cat => categories.includes(cat));
+        const matchesSearch = !searchTerm || title.includes(searchTerm) || description.includes(searchTerm);
+        const matchesCuisine = selectedCuisines.length === 0 || selectedCuisines.includes(cuisine);
+        const matchesMeal = selectedMeals.length === 0 || selectedMeals.includes(meal);
+        const matchesCategory = selectedCategories.length === 0 || selectedCategories.some(cat => categories.includes(cat));
 
         if (matchesSearch && matchesCuisine && matchesMeal && matchesCategory) {
             item.classList.remove('hidden');
@@ -2153,34 +2147,35 @@ function filterMenu() {
         }
     });
 
+    // Hide section titles if all items inside are hidden
+    sections.forEach(section => {
+        const itemsInSection = section.querySelectorAll('.menu-item');
+        const anyVisible = Array.from(itemsInSection).some(item => !item.classList.contains('hidden'));
+        const titleElem = section.querySelector('.section-title');
+        if (titleElem) {
+            titleElem.classList.toggle('hidden', !anyVisible);
+        }
+    });
+
     resultsCount.textContent = `Showing ${visibleCount} of ${menuItems.length} items`;
 }
 
-// Add event listeners for filters
+// -------------------- EVENT LISTENERS --------------------
+// Search input
 searchInput.addEventListener('input', filterMenu);
 
-cuisineCheckboxes.forEach(cb => {
-    cb.addEventListener('change', function() {
-        this.parentElement.classList.toggle('active', this.checked);
-        filterMenu();
+// Filter checkboxes
+[cuisineCheckboxes, mealCheckboxes, categoryCheckboxes].forEach(group => {
+    group.forEach(cb => {
+        cb.addEventListener('change', function() {
+            this.parentElement.classList.toggle('active', this.checked);
+            filterMenu();
+        });
     });
 });
 
-mealCheckboxes.forEach(cb => {
-    cb.addEventListener('change', function() {
-        this.parentElement.classList.toggle('active', this.checked);
-        filterMenu();
-    });
-});
-
-categoryCheckboxes.forEach(cb => {
-    cb.addEventListener('change', function() {
-        this.parentElement.classList.toggle('active', this.checked);
-        filterMenu();
-    });
-});
-
-clearFiltersBtn.addEventListener('click', function() {
+// Clear filters button
+clearFiltersBtn.addEventListener('click', () => {
     searchInput.value = '';
     [...cuisineCheckboxes, ...mealCheckboxes, ...categoryCheckboxes].forEach(cb => {
         cb.checked = false;
@@ -2189,17 +2184,13 @@ clearFiltersBtn.addEventListener('click', function() {
     filterMenu();
 });
 
-// Quantity selector with auto total calculation
+// -------------------- QUANTITY & TOTAL CALCULATION --------------------
 menuItems.forEach(item => {
     const qtyInput = item.querySelector('.qty-input');
     const minusBtn = item.querySelector('.qty-btn:first-of-type');
     const plusBtn = item.querySelector('.qty-btn:last-of-type');
-
-    // Get price from item-price-number
     const priceText = item.querySelector('.item-price').textContent.trim();
     const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
-
-    // Use existing total element
     const totalElem = item.querySelector('.item-total');
 
     function updateTotal() {
@@ -2224,15 +2215,15 @@ menuItems.forEach(item => {
 
     qtyInput.addEventListener('input', () => {
         const min = parseInt(qtyInput.min) || 1;
-        let current = parseInt(qtyInput.value) || min;
-        if (current < min) qtyInput.value = min;
+        if (parseInt(qtyInput.value) < min || isNaN(parseInt(qtyInput.value))) {
+            qtyInput.value = min;
+        }
         updateTotal();
     });
 
-    // Initialize total
     updateTotal();
 });
 
-// Initialize results count
+// -------------------- INITIALIZE --------------------
 filterMenu();
 </script>
