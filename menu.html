@@ -2694,7 +2694,8 @@ function filterMenu() {
         const matchesSearch = !searchTerm || title.includes(searchTerm) || description.includes(searchTerm);
         const matchesCuisine = selectedCuisines.length === 0 || selectedCuisines.includes(cuisine);
         const matchesMeal = selectedMeals.length === 0 || selectedMeals.includes(meal);
-        const matchesCategory = selectedCategories.length === 0 || selectedCategories.some(cat => categories.includes(cat));
+        const matchesCategory =  selectedCategories.length === 0 ||selectedCategories.some(cat => categories.some(c => c.toLowerCase().trim() === cat.toLowerCase().trim())
+      );
 
         if (matchesSearch && matchesCuisine && matchesMeal && matchesCategory) {
             item.classList.remove('hidden');
