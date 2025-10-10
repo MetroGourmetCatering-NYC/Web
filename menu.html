@@ -2664,19 +2664,19 @@ const categoryCheckboxes = document.querySelectorAll('#categoryFilters input[typ
 
 // -------------------- FILTER FUNCTION --------------------
 function filterMenu() {
-    const searchTerm = searchInput.value.toLowerCase();
+    const searchTerm = searchInput.value.toLowerCase().trim();
 
     const selectedCuisines = Array.from(cuisineCheckboxes)
         .filter(cb => cb.checked)
-        .map(cb => cb.value);
+        .map(cb => cb.value.toLowerCase().trim());
 
     const selectedMeals = Array.from(mealCheckboxes)
         .filter(cb => cb.checked)
-        .map(cb => cb.value);
+        .map(cb => cb.value.toLowerCase().trim());
 
     const selectedCategories = Array.from(categoryCheckboxes)
         .filter(cb => cb.checked)
-        .map(cb => cb.value);
+        .map(cb => cb.value.toLowerCase().trim());
 
     let visibleCount = 0;
 
@@ -2684,9 +2684,12 @@ function filterMenu() {
     menuItems.forEach(item => {
         const title = item.querySelector('.item-title').textContent.toLowerCase();
         const description = item.querySelector('.item-description').textContent.toLowerCase();
-        const cuisine = item.dataset.cuisine;
-        const meal = item.dataset.meal;
-        const categories = item.dataset.category ? item.dataset.category.split(',') : [];
+        const cuisine = (item.dataset.cuisine || '').toLowerCase().trim();
+        const meal = (item.dataset.meal || '').toLowerCase().trim();
+        const categories = (item.dataset.category || '')
+            .split(',')
+            .map(cat => cat.toLowerCase().trim())
+            .filter(Boolean);
 
         const matchesSearch = !searchTerm || title.includes(searchTerm) || description.includes(searchTerm);
         const matchesCuisine = selectedCuisines.length === 0 || selectedCuisines.includes(cuisine);
@@ -2705,7 +2708,7 @@ function filterMenu() {
     sections.forEach(section => {
         const itemsInSection = section.querySelectorAll('.menu-item');
         const anyVisible = Array.from(itemsInSection).some(item => !item.classList.contains('hidden'));
-        const titleElem = section.querySelector('.section-title');
+        const titleElem = section.querySelector('.section-title, .category-title');
         if (titleElem) {
             titleElem.classList.toggle('hidden', !anyVisible);
         }
@@ -2715,10 +2718,8 @@ function filterMenu() {
 }
 
 // -------------------- EVENT LISTENERS --------------------
-// Search input
 searchInput.addEventListener('input', filterMenu);
 
-// Filter checkboxes
 [cuisineCheckboxes, mealCheckboxes, categoryCheckboxes].forEach(group => {
     group.forEach(cb => {
         cb.addEventListener('change', function() {
@@ -2728,7 +2729,6 @@ searchInput.addEventListener('input', filterMenu);
     });
 });
 
-// Clear filters button
 clearFiltersBtn.addEventListener('click', () => {
     searchInput.value = '';
     [...cuisineCheckboxes, ...mealCheckboxes, ...categoryCheckboxes].forEach(cb => {
