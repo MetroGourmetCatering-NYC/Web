@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metro Gourmet Catering & Events NYC - Luxury Catering Services</title>
+    <title>Metro Gourmet Catering & Events NYC - Grand Opening</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -81,7 +81,7 @@
             color: #D4AF37;
         }
 
-        /* Hero Section with Faded Image Background */
+        /* Hero Section */
         .hero-section {
             position: relative;
             background: #000000;
@@ -93,7 +93,6 @@
             overflow: hidden;
         }
 
-        /* The Background Dish Image */
         .hero-section::before {
             content: '';
             position: absolute;
@@ -101,15 +100,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            /* Replace the URL below with your specific dish image if needed */
             background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            opacity: 0.4; /* Adjust this value to make the dish more or less visible */
+            opacity: 0.4;
             z-index: 1;
         }
 
-        /* Dark Overlay to help the Logo pop */
         .hero-section::after {
             content: '';
             position: absolute;
@@ -125,14 +122,14 @@
             position: relative;
             text-align: center;
             max-width: 800px;
-            z-index: 3; /* Keeps logo above the background image and overlay */
+            z-index: 3;
         }
 
         .logo-box {
-            border: 3px solid #d4af37;
+            border: 2px solid #d4af37;
             padding: 4rem;
-            background: rgba(0, 0, 0, 0.4); /* Darker semi-transparent background for logo box */
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
             margin-bottom: 2rem;
             min-height: 400px;
             display: flex;
@@ -149,25 +146,11 @@
             transition: opacity 1s ease, transform 1s ease;
         }
 
-        .logo-box:hover {
-            border-color: #f4d03f;
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        .logo-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
         .logo-placeholder img {
             max-width: 100%;
             max-height: 350px;
             object-fit: contain;
+            filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.5));
         }
 
         .hero-subtitle {
@@ -176,7 +159,19 @@
             color: #ffffff;
             letter-spacing: 3px;
             margin-top: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Subtle shadow for readability */
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .grand-opening-tag {
+            display: inline-block;
+            background: #D4AF37;
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
         }
 
         /* CTA Buttons */
@@ -185,6 +180,8 @@
             gap: 2rem;
             justify-content: center;
             margin: 3rem 0;
+            position: relative;
+            z-index: 10;
         }
 
         .cta-btn {
@@ -199,25 +196,10 @@
             border: 2px solid #D4AF37;
         }
 
-        .cta-btn-primary {
-            background: #D4AF37;
-            color: #000000;
-        }
-
-        .cta-btn-primary:hover {
-            background: #000000;
-            color: #D4AF37;
-        }
-
-        .cta-btn-secondary {
-            background: transparent;
-            color: #D4AF37;
-        }
-
-        .cta-btn-secondary:hover {
-            background: #D4AF37;
-            color: #000000;
-        }
+        .cta-btn-primary { background: #D4AF37; color: #000000; }
+        .cta-btn-primary:hover { background: #000000; color: #D4AF37; }
+        .cta-btn-secondary { background: transparent; color: #D4AF37; }
+        .cta-btn-secondary:hover { background: #D4AF37; color: #000000; }
 
         /* Favorites Section */
         .favorites-section {
@@ -228,6 +210,8 @@
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
+            position: relative;
+            z-index: 5;
         }
 
         .section-title {
@@ -275,19 +259,8 @@
         .item-image {
             width: 100%;
             height: 280px;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #f5f5f5;
             overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .item-image.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 1s ease, transform 1s ease;
         }
 
         .item-image img {
@@ -296,10 +269,7 @@
             object-fit: cover;
         }
 
-        .item-content {
-            padding: 2rem;
-        }
-
+        .item-content { padding: 2rem; }
         .item-name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
@@ -308,63 +278,81 @@
             margin-bottom: 0.8rem;
         }
 
-        .item-description {
-            color: #666;
-            font-size: 1rem;
-            line-height: 1.7;
+        /* Testimonials Section Rebranded as "Our Arrival" */
+        .testimonials-section {
+            position: relative;
+            background: #0a0a0a;
+            padding: 8rem 5%;
+            overflow: hidden;
         }
 
-        /* Testimonials Section */
-        .testimonials-section {
-            background: #f8f8f8;
-            padding: 6rem 5%;
+        .testimonials-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.1;
+            z-index: 1;
         }
+
+        .testimonials-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 20%, transparent 80%, rgba(0,0,0,0.6));
+            z-index: 2;
+        }
+
+        .testimonials-section .section-title { color: #ffffff; }
+        .testimonials-section .section-subtitle { color: #D4AF37; font-weight: 600; text-transform: uppercase; }
 
         .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            max-width: 1400px;
+            position: relative;
+            z-index: 3;
+            max-width: 1000px;
             margin: 0 auto;
+            text-align: center;
         }
 
-        .testimonial-card {
-            background: #ffffff;
-            padding: 3rem;
-            border-left: 4px solid #D4AF37;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        .opening-message {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            padding: 4rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
-        .testimonial-rating {
-            color: #D4AF37;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-text {
-            font-size: 1.05rem;
+        .opening-text {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-family: 'Cormorant Garamond', serif;
             line-height: 1.8;
-            color: #333;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             font-style: italic;
         }
 
-        .testimonial-author {
+        .founder-sig {
+            color: #D4AF37;
             font-weight: 600;
-            color: #1a1a1a;
-            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .testimonial-role {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        /* Quick Links Footer */
+        /* Quick Links & Footer */
         .quick-links-section {
-            background: #1a1a1a;
-            padding: 4rem 5%;
+            background: #111;
+            padding: 5rem 5% 4rem;
             color: #ffffff;
+            border-top: 1px solid #222;
         }
 
         .quick-links-container {
@@ -372,205 +360,46 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            gap: 4rem;
         }
 
         .quick-links-column h3 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: #D4AF37;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
         }
 
-        .quick-links-column ul {
-            list-style: none;
-        }
-
-        .quick-links-column ul li {
-            margin-bottom: 0.8rem;
-        }
-
+        .quick-links-column ul { list-style: none; }
+        .quick-links-column ul li { margin-bottom: 1rem; }
         .quick-links-column ul li a {
-            color: #e0e0e0;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .quick-links-column ul li a:hover {
-            color: #D4AF37;
-        }
-
-        .contact-info p {
-            color: #e0e0e0;
-            margin-bottom: 0.8rem;
-            line-height: 1.8;
-        }
-
-        /* Footer */
-        footer {
-            background: #000000;
-            color: #ffffff;
-            padding: 2rem 5%;
-            text-align: center;
-        }
-
-        footer p {
             color: #999;
-            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .nav-links {
-                gap: 2rem;
-                font-size: 0.9rem;
-            }
-            
-            .logo-text {
-                font-size: 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 3rem;
-            }
-        }
+        .quick-links-column ul li a:hover { color: #D4AF37; padding-left: 5px; }
+
+        footer { background: #000; color: #555; padding: 2rem 5%; text-align: center; border-top: 1px solid #111; }
 
         @media (max-width: 968px) {
-            nav {
-                padding: 1rem 3%;
-            }
-            
-            .nav-links {
-                gap: 1.2rem;
-                font-size: 0.8rem;
-            }
-            
-            .logo-text {
-                font-size: 1.3rem;
-            }
-            
-            .item-image {
-                height: 200px;
-            }
-            
-            .item-content {
-                padding: 1.5rem;
-            }
-            
-            .item-name {
-                font-size: 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .favorites-section,
-            .testimonials-section {
-                padding: 4rem 3%;
-            }
-            
-            .cta-btn {
-                padding: 1rem 2.5rem;
-                font-size: 1rem;
-            }
+            .section-title { font-size: 2.5rem; }
+            .favorites-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 640px) {
-            nav {
-                padding: 0.8rem 3%;
-            }
-
-            .nav-links-wrapper {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scroll-behavior: smooth;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }
-
-            .nav-links-wrapper::-webkit-scrollbar {
-                display: none;
-            }
-            
-            .nav-links {
-                flex-wrap: nowrap;
-                gap: 1.5rem;
-            }
-
-            .nav-links a {
-                white-space: nowrap;
-            }
-            
-            .logo-text {
-                font-size: 1.1rem;
-            }
-            
-            .favorites-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-
-            .favorites-grid .favorite-item:nth-child(3) {
-                grid-column: 1 / span 2;
-            }
-            
-            .item-image {
-                height: 150px;
-            }
-            
-            .item-content {
-                padding: 1rem;
-            }
-            
-            .item-name {
-                font-size: 1.2rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .cta-btn {
-                padding: 0.9rem 2rem;
-                font-size: 0.9rem;
-            }
-
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .testimonial-card {
-                padding: 1.5rem;
-                font-size: 0.95rem;
-            }
-
-            .testimonial-text {
-                font-size: 0.9rem;
-                line-height: 1.6;
-            }
-
-            .quick-links-container {
-                grid-template-columns: 1fr;
-                max-width: 90%;
-                margin: 0 auto;
-                text-align: center;
-            }
-
-            .quick-links-column h3 {
-                font-size: 1.3rem;
-            }
-
-            .quick-links-column ul li a {
-                font-size: 0.9rem;
-            }
+            .favorites-grid { grid-template-columns: 1fr; }
+            .opening-message { padding: 2rem; }
+            .opening-text { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
-<!-- Navigation -->
+
 <nav id="navbar">
     <div class="nav-container">
         <div class="logo-text">MGC</div>
@@ -581,15 +410,14 @@
                 <li><a href="order.html">Order Now</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="who-we-serve.html">Who We Serve</a></li>
-                <li><a href="testimonials.html">Testimonials</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- Hero Section with Background Image -->
 <section class="hero-section">
     <div class="logo-container">
+        <div class="grand-opening-tag">Grand Opening 2025</div>
         <div class="logo-box">
             <div class="logo-placeholder">
                 <img src="LOGO GOURMET.png" alt="Metro Gourmet Catering Logo" onerror="this.src='/placeholder.svg?height=350&width=350&text=MGC+LOGO'">
@@ -604,73 +432,55 @@
     <a href="menu.html" class="cta-btn cta-btn-secondary">View Full Menu</a>
 </div>
 
-<!-- Favorites Section -->
 <section class="favorites-section">
     <div class="section-header">
         <h2 class="section-title">Our Signature Favorites</h2>
         <div class="gold-line"></div>
-        <p class="section-subtitle">Exquisite dishes that define luxury catering</p>
+        <p class="section-subtitle">A first look at our define luxury catering menu</p>
     </div>
 
     <div class="favorites-grid">
         <div class="favorite-item">
-            <div class="item-image">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&h=280&auto=format&fit=crop" alt="Beef Wellington">
-            </div>
+            <div class="item-image"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&h=280&auto=format&fit=crop" alt="Beef Wellington"></div>
             <div class="item-content">
                 <h3 class="item-name">Beef Wellington</h3>
-                <p class="item-description">Tender beef wrapped in golden puff pastry with mushroom duxelles and rich red wine reduction</p>
+                <p>Tender beef wrapped in golden puff pastry with mushroom duxelles.</p>
             </div>
         </div>
-
         <div class="favorite-item">
-            <div class="item-image">
-                <img src="https://images.unsplash.com/photo-1559742811-822873691df0?q=80&w=400&h=280&auto=format&fit=crop" alt="Butter-Poached Lobster">
-            </div>
+            <div class="item-image"><img src="https://images.unsplash.com/photo-1559742811-822873691df0?q=80&w=400&h=280&auto=format&fit=crop" alt="Butter-Poached Lobster"></div>
             <div class="item-content">
                 <h3 class="item-name">Butter-Poached Lobster</h3>
-                <p class="item-description">Succulent lobster tail poached in herb butter, served with lemon and seasonal vegetables</p>
+                <p>Succulent lobster tail poached in herb butter, served with seasonal vegetables.</p>
             </div>
         </div>
-
         <div class="favorite-item">
-            <div class="item-image">
-                <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?q=80&w=400&h=280&auto=format&fit=crop" alt="Black Truffle Risotto">
-            </div>
+            <div class="item-image"><img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?q=80&w=400&h=280&auto=format&fit=crop" alt="Black Truffle Risotto"></div>
             <div class="item-content">
                 <h3 class="item-name">Black Truffle Risotto</h3>
-                <p class="item-description">Creamy arborio rice infused with black truffle and aged parmesan, finished with truffle oil</p>
+                <p>Creamy arborio rice infused with black truffle and aged parmesan.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Testimonials Section -->
 <section class="testimonials-section">
     <div class="section-header">
-        <h2 class="section-title">What Our Clients Say</h2>
+        <h2 class="section-title">Fresh Perspective</h2>
         <div class="gold-line"></div>
-        <p class="section-subtitle">Trusted by New York's finest events</p>
+        <p class="section-subtitle">New York's Newest Culinary Destination</p>
     </div>
 
     <div class="testimonials-grid">
-        <div class="testimonial-card">
-            <div class="testimonial-rating">★★★★★</div>
-            <p class="testimonial-text">"Metro Gourmet made our wedding day absolutely perfect. The food was exceptional, the presentation stunning, and their staff incredibly professional. Our guests are still raving about the meal!"</p>
-            <div class="testimonial-author">Sarah & Michael Chen</div>
-            <div class="testimonial-role">Wedding Reception, Manhattan</div>
-        </div>
-
-        <div class="testimonial-card">
-            <div class="testimonial-rating">★★★★★</div>
-            <p class="testimonial-text">"From corporate events to private dinners, Metro Gourmet consistently delivers perfection. Their attention to detail and creative menus make every gathering unforgettable."</p>
-            <div class="testimonial-author">James R.</div>
-            <div class="testimonial-role">Corporate Client</div>
+        <div class="opening-message">
+            <p class="opening-text">
+                "We are officially opening our doors to New York City. While we may be the newest name in the city, our passion for exquisite flavors and meticulous event planning is decades in the making. We invite you to be among the first to experience the Metro Gourmet difference."
+            </p>
+            <div class="founder-sig">The Metro Gourmet Team</div>
         </div>
     </div>
 </section>
 
-<!-- Footer -->
 <section class="quick-links-section">
     <div class="quick-links-container">
         <div class="quick-links-column">
@@ -680,47 +490,34 @@
                 <li><a href="menu.html">Menu</a></li>
                 <li><a href="order.html">Order Now</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="who-we-serve.html">Who We Serve</a></li>
-                <li><a href="testimonials.html">Testimonials</a></li>
             </ul>
         </div>
-
-        <div class="quick-links-column contact-info">
+        <div class="quick-links-column">
             <h3>Contact Us</h3>
-            <p>Metro Gourmet Catering & Events NYC</p>
             <p>Email: info@metrogourmetcatering.com</p>
             <p>Phone: (212) 555-9876</p>
-            <p>Serving New York City & Surrounding Areas</p>
+            <p>Serving NYC & Tri-State</p>
         </div>
     </div>
 </section>
 
 <footer>
-    <p>&copy; 2025 Metro Gourmet Catering & Events NYC. All Rights Reserved.</p>
+    <p>&copy; 2025 Metro Gourmet Catering & Events NYC. Now Accepting Bookings.</p>
 </footer>
 
 <script>
-    // Scroll effect for nav
     window.addEventListener('scroll', () => {
         const nav = document.getElementById('navbar');
-        if(window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
+        nav.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Intersection Observer for fade-in
-    const boxes = document.querySelectorAll('.logo-box, .item-image');
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+            if(entry.isIntersecting) entry.target.classList.add('visible');
         });
     }, { threshold: 0.1 });
 
-    boxes.forEach(box => observer.observe(box));
+    document.querySelectorAll('.logo-box').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
