@@ -81,25 +81,58 @@
             color: #D4AF37;
         }
 
-        /* Hero Section */
+        /* Hero Section with Faded Image Background */
         .hero-section {
+            position: relative;
             background: #000000;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 8rem 2rem 4rem;
+            overflow: hidden;
+        }
+
+        /* The Background Dish Image */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Replace the URL below with your specific dish image if needed */
+            background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4; /* Adjust this value to make the dish more or less visible */
+            z-index: 1;
+        }
+
+        /* Dark Overlay to help the Logo pop */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.8) 100%);
+            z-index: 2;
         }
 
         .logo-container {
+            position: relative;
             text-align: center;
             max-width: 800px;
+            z-index: 3; /* Keeps logo above the background image and overlay */
         }
 
         .logo-box {
             border: 3px solid #d4af37;
             padding: 4rem;
-            background: rgba(212, 175, 55, 0.05);
+            background: rgba(0, 0, 0, 0.4); /* Darker semi-transparent background for logo box */
+            backdrop-filter: blur(5px);
             margin-bottom: 2rem;
             min-height: 400px;
             display: flex;
@@ -143,6 +176,7 @@
             color: #ffffff;
             letter-spacing: 3px;
             margin-top: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Subtle shadow for readability */
         }
 
         /* CTA Buttons */
@@ -553,12 +587,12 @@
     </div>
 </nav>
 
-<!-- Hero Section -->
+<!-- Hero Section with Background Image -->
 <section class="hero-section">
     <div class="logo-container">
         <div class="logo-box">
             <div class="logo-placeholder">
-                <img src="LOGO GOURMET.png" alt="Metro Gourmet Catering Logo">
+                <img src="LOGO GOURMET.png" alt="Metro Gourmet Catering Logo" onerror="this.src='/placeholder.svg?height=350&width=350&text=MGC+LOGO'">
             </div>
         </div>
         <h1 class="hero-subtitle">METRO GOURMET CATERING & EVENTS NYC</h1>
@@ -581,7 +615,7 @@
     <div class="favorites-grid">
         <div class="favorite-item">
             <div class="item-image">
-                <img src="/placeholder.svg?height=280&width=400" alt="Beef Wellington">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=400&h=280&auto=format&fit=crop" alt="Beef Wellington">
             </div>
             <div class="item-content">
                 <h3 class="item-name">Beef Wellington</h3>
@@ -591,7 +625,7 @@
 
         <div class="favorite-item">
             <div class="item-image">
-                <img src="/placeholder.svg?height=280&width=400" alt="Butter-Poached Lobster">
+                <img src="https://images.unsplash.com/photo-1559742811-822873691df0?q=80&w=400&h=280&auto=format&fit=crop" alt="Butter-Poached Lobster">
             </div>
             <div class="item-content">
                 <h3 class="item-name">Butter-Poached Lobster</h3>
@@ -601,13 +635,14 @@
 
         <div class="favorite-item">
             <div class="item-image">
-                <img src="/placeholder.svg?height=280&width=400" alt="Black Truffle Risotto">
+                <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?q=80&w=400&h=280&auto=format&fit=crop" alt="Black Truffle Risotto">
             </div>
             <div class="item-content">
                 <h3 class="item-name">Black Truffle Risotto</h3>
                 <p class="item-description">Creamy arborio rice infused with black truffle and aged parmesan, finished with truffle oil</p>
             </div>
         </div>
+    </div>
 </section>
 
 <!-- Testimonials Section -->
