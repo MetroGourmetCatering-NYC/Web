@@ -104,7 +104,7 @@
             background-size: cover;
             background-position: center;
             opacity: 0.4;
-            z-index: 1;
+            z-index: 0;
         }
 
         .hero-section::after {
@@ -278,44 +278,41 @@
             margin-bottom: 0.8rem;
         }
 
-        /* Testimonials Section Rebranded as "Our Arrival" */
-        .testimonials-section {
+        /* "Fresh Perspective" Section with Video Background */
+        .fresh-perspective-section {
             position: relative;
             background: #0a0a0a;
             padding: 8rem 5%;
             overflow: hidden;
         }
 
-        .testimonials-section::before {
-            content: '';
+        /* Video Background for Fresh Perspective */
+        .video-background {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            opacity: 0.1;
+            width: 100%;
+            height: 100%;
             z-index: 1;
+            object-fit: cover;
+            opacity: 0.1; /* Keeping it ultra-light as requested earlier */
         }
 
-        .testimonials-section::after {
+        .fresh-perspective-section::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 20%, transparent 80%, rgba(0,0,0,0.6));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 20%, transparent 80%, rgba(0,0,0,0.8));
             z-index: 2;
         }
 
-        .testimonials-section .section-title { color: #ffffff; }
-        .testimonials-section .section-subtitle { color: #D4AF37; font-weight: 600; text-transform: uppercase; }
+        .fresh-perspective-section .section-title { color: #ffffff; position: relative; z-index: 3; }
+        .fresh-perspective-section .section-subtitle { color: #D4AF37; font-weight: 600; text-transform: uppercase; position: relative; z-index: 3; }
 
-        .testimonials-grid {
+        .perspective-content-wrapper {
             position: relative;
             z-index: 3;
             max-width: 1000px;
@@ -464,14 +461,19 @@
     </div>
 </section>
 
-<section class="testimonials-section">
+<!-- Section with the Video Background Loop -->
+<section class="fresh-perspective-section">
+    <video autoplay muted loop playsinline class="video-background">
+        <source src="hero-video.mp4" type="video/mp4">
+    </video>
+
     <div class="section-header">
         <h2 class="section-title">Fresh Perspective</h2>
         <div class="gold-line"></div>
         <p class="section-subtitle">New York's Newest Culinary Destination</p>
     </div>
 
-    <div class="testimonials-grid">
+    <div class="perspective-content-wrapper">
         <div class="opening-message">
             <p class="opening-text">
                 "We are officially opening our doors to New York City. While we may be the newest name in the city, our passion for exquisite flavors and meticulous event planning is decades in the making. We invite you to be among the first to experience the Metro Gourmet difference."
